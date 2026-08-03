@@ -1,12 +1,8 @@
 @use "./variables.scss" as *;
-@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
-/* Custom Font & Theme Variables */
+/* Custom White & Blue Theme */
 :root {
-  --headerFont: 'MedievalSharp', cursive;
-  --bodyFont: 'MedievalSharp', cursive; 
-
-  /* Light Mode Colors (White & Blue) */
+  /* Light Mode Colors */
   --light: #ffffff;             /* Main background */
   --lightgray: #e2e8f0;         /* Borders and subtle dividers */
   --gray: #64748b;              /* Secondary text / dates */
@@ -17,7 +13,7 @@
   --highlight: rgba(56, 189, 248, 0.15); /* Search / text highlights */
 }
 
-/* Dark Mode Colors (Deep Slate & Soft Blue) */
+/* Dark Mode Colors */
 :root[saved-theme="dark"] {
   --light: #0f172a;
   --lightgray: #1e293b;
@@ -40,5 +36,5 @@ article {
 /* Center Lists Neatly */
 article ul, article ol {
   display: inline-block;
-  text-align: left; /* Keeps bullets aligned while centering the container */
+  text-align: left;
 }
