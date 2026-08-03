@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: github.com/edsb11/erduimwiki.git
+  baseUrl: edsb11.github.io/erduimwiki
   ignorePatterns:
     - private
     - templates
