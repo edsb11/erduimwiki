@@ -1,13 +1,13 @@
->home
 
 ### Welcome!
-Erduim Wiki is a website dedicated to archiving worldubilding information about a universe made for a Dungeons and Dragons campaign made by a group of friends to keep the information organized. 
+---
+Erduim Wiki is an archive for worldubilding and keeping information about a universe made for a Dungeons and Dragons campaign ran by friends.
 
 
 <div style="display: flex; gap: 10px;">
 
   <!-- Button 1 -->
-  <a href="Maps and Locations" style="text-decoration: none;">
+  <a href="Maps-and-Locations" style="text-decoration: none;">
     <div style="border: 2px solid #8b3a2b; border-radius: 6px; text-align: center; width: 140px; overflow: hidden;">
       <img src="gods-thumb.jpg" style="width: 100%; height: 100px; object-fit: cover;">
       <div style="background: #8b3a2b; color: white; padding: 6px; font-weight: bold;">
