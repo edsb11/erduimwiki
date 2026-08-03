@@ -57,3 +57,17 @@ h1, h2, h3, h4, h5, h6,
 p, a, span, li {
   font-family: 'MedievalSharp', cursive, sans-serif !important;
 }
+
+/* Parchment Background Texture */
+body, 
+[data-theme="light"] body {
+  background-image: url('/static/paper-bg.jpg') !important;
+  background-repeat: repeat;             /* Tiles the texture seamlessly */
+  background-attachment: fixed;          /* Keeps texture stationary while scrolling */
+  background-color: #f4ecd8;             /* Warm fallback color while loading */
+}
+
+/* Optional: Make main containers slightly translucent so the texture bleeds through nicely */
+:root {
+  --light: rgba(255, 255, 255, 0.45) !important; 
+}
