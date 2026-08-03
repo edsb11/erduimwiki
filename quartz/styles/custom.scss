@@ -1,7 +1,3 @@
-@use "./variables.scss" as *;
-
-// put your custom CSS here!
-
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
 :root {
@@ -9,6 +5,12 @@
   /* Optional: Set body font too, or keep body as a clean sans-serif for readability */
   --bodyFont: 'MedievalSharp', cursive; 
 }
+
+@use "./variables.scss" as *;
+
+// put your custom CSS here!
+
+
 
 /* Custom White & Blue Theme */
 :root {
