@@ -1,3 +1,42 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+/* Custom White & Blue Theme */
+:root {
+  /* Light Mode Colors */
+  --light: #ffffff;             /* Main background */
+  --lightgray: #e2e8f0;         /* Borders and subtle dividers */
+  --gray: #64748b;              /* Secondary text / dates */
+  --darkgray: #1e293b;          /* Body text color */
+  --dark: #0f172a;              /* Headings (H1, H2, etc.) */
+  --secondary: #0284c7;         /* Primary links and accents (Sky Blue) */
+  --tertiary: #38bdf8;          /* Hover state for links */
+  --highlight: rgba(56, 189, 248, 0.15); /* Search / text highlights */
+}
+
+/* Optional: Keep dark mode styled with deep slate & soft blue accents */
+:root[saved-theme="dark"] {
+  --light: #0f172a;
+  --lightgray: #1e293b;
+  --gray: #94a3b8;
+  --darkgray: #f1f5f9;
+  --dark: #ffffff;
+  --secondary: #38bdf8;
+  --tertiary: #7dd3fc;
+  --highlight: rgba(56, 189, 248, 0.25);
+}
+
+/* Center all main body content text */
+.popover-hint, 
+article.popover-hint, 
+.page .page-header, 
+article {
+  text-align: center;
+}
+
+/* Optional: Keep lists neatly centered */
+article ul, article ol {
+  display: inline-block;
+  text-align: left; /* Keeps bullet alignment readable while centering the list block */
+}
