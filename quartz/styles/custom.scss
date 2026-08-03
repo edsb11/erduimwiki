@@ -71,3 +71,19 @@ body,
 :root {
   --light: rgba(255, 255, 255, 0.45) !important; 
 }
+
+/* Pure CSS Old Paper Texture */
+body, 
+[data-theme="light"] body {
+  background-color: #f3e5ab !important; /* Soft parchment base */
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6), rgba(210, 180, 140, 0.4)),
+    radial-gradient(circle at 20% 20%, rgba(139, 69, 19, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(139, 69, 19, 0.08) 0%, transparent 40%) !important;
+  background-attachment: fixed !important;
+}
+
+/* Make page backgrounds blend with the CSS parchment */
+:root {
+  --light: rgba(247, 238, 215, 0.8) !important;
+}
