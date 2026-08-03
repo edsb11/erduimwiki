@@ -1,19 +1,23 @@
 @use "./variables.scss" as *;
 
-/* Custom White & Blue Theme */
 :root {
-  /* Light Mode Colors */
-  --light: #ffffff;             /* Main background */
-  --lightgray: #e2e8f0;         /* Borders and subtle dividers */
-  --gray: #64748b;              /* Secondary text / dates */
-  --darkgray: #1e293b;          /* Body text color */
-  --dark: #0f172a;              /* Headings (H1, H2, etc.) */
-  --secondary: #0284c7;         /* Primary links and accents (Sky Blue) */
-  --tertiary: #38bdf8;          /* Hover state for links */
-  --highlight: rgba(56, 189, 248, 0.15); /* Search / text highlights */
+  /* Force MedievalSharp on body and headers */
+  --font-body: 'MedievalSharp', cursive, sans-serif !important;
+  --font-header: 'MedievalSharp', cursive, sans-serif !important;
+  --bodyFont: 'MedievalSharp', cursive, sans-serif !important;
+  --headerFont: 'MedievalSharp', cursive, sans-serif !important;
+
+  /* White & Blue Theme */
+  --light: #ffffff;
+  --lightgray: #e2e8f0;
+  --gray: #64748b;
+  --darkgray: #1e293b;
+  --dark: #0f172a;
+  --secondary: #0284c7;
+  --tertiary: #38bdf8;
+  --highlight: rgba(56, 189, 248, 0.15);
 }
 
-/* Dark Mode Colors */
 :root[saved-theme="dark"] {
   --light: #0f172a;
   --lightgray: #1e293b;
@@ -33,7 +37,6 @@ article {
   text-align: center;
 }
 
-/* Center Lists Neatly */
 article ul, article ol {
   display: inline-block;
   text-align: left;
