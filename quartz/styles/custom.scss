@@ -1,20 +1,12 @@
+@use "./variables.scss" as *;
 @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
 
+/* Custom Font & Theme Variables */
 :root {
   --headerFont: 'MedievalSharp', cursive;
-  /* Optional: Set body font too, or keep body as a clean sans-serif for readability */
   --bodyFont: 'MedievalSharp', cursive; 
-}
 
-@use "./variables.scss" as *;
-
-// put your custom CSS here!
-
-
-
-/* Custom White & Blue Theme */
-:root {
-  /* Light Mode Colors */
+  /* Light Mode Colors (White & Blue) */
   --light: #ffffff;             /* Main background */
   --lightgray: #e2e8f0;         /* Borders and subtle dividers */
   --gray: #64748b;              /* Secondary text / dates */
@@ -25,7 +17,7 @@
   --highlight: rgba(56, 189, 248, 0.15); /* Search / text highlights */
 }
 
-/* Optional: Keep dark mode styled with deep slate & soft blue accents */
+/* Dark Mode Colors (Deep Slate & Soft Blue) */
 :root[saved-theme="dark"] {
   --light: #0f172a;
   --lightgray: #1e293b;
@@ -37,7 +29,7 @@
   --highlight: rgba(56, 189, 248, 0.25);
 }
 
-/* Center all main body content text */
+/* Center Content Alignment */
 .popover-hint, 
 article.popover-hint, 
 .page .page-header, 
@@ -45,8 +37,8 @@ article {
   text-align: center;
 }
 
-/* Optional: Keep lists neatly centered */
+/* Center Lists Neatly */
 article ul, article ol {
   display: inline-block;
-  text-align: left; /* Keeps bullet alignment readable while centering the list block */
+  text-align: left; /* Keeps bullets aligned while centering the container */
 }
