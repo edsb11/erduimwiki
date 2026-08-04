@@ -43,7 +43,7 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none; /* Allows clicking through the vignette */
+  pointer-events: none;
   z-index: 999;
   background: radial-gradient(
     circle, 
@@ -53,7 +53,7 @@ body::before {
   ) !important;
 }
 
-/* 3. FIX: Force Vertical Lines to Dark Red */
+/* 3. Force Vertical Lines to Dark Red */
 .page,
 .center,
 .left,
@@ -66,12 +66,40 @@ div[class*="center"] {
   outline-color: #8b0000 !important;
 }
 
-/* Remove default white gaps/margins in Quartz grid layout */
-.page > * {
+/* 4. Explorer Panel Fix -> Blend seamlessly with page background */
+.explorer,
+.explorer-content,
+.explorer-ul,
+.explorer-ul *,
+div[class*="explorer"] {
   background-color: transparent !important;
+  background: transparent !important;
 }
 
-/* 4. Page Dividers (<hr>) -> Dark Brown */
+/* Fix for active/hover background highlights on file tree items */
+.explorer .folder-container:hover,
+.explorer li:hover,
+.explorer a:hover {
+  background-color: rgba(139, 0, 0, 0.08) !important; /* Soft red tint on hover */
+  border-radius: 4px;
+}
+
+/* 5. Graph View -> Soft Warm Beige / Lighter Yellow (No outlines) */
+.graph,
+.graph-outer,
+.graph-view,
+#graph-container,
+.graph > div,
+.graph-component,
+canvas {
+  background-color: #fdf8eb !important; /* Light parchment beige */
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-radius: 6px !important;
+}
+
+/* 6. Page Dividers (<hr>) -> Dark Brown */
 hr, 
 article hr {
   border: none !important;
@@ -80,7 +108,7 @@ article hr {
   opacity: 0.8 !important;
 }
 
-/* 5. Search Bar -> Whiter Yellow */
+/* 7. Search Bar -> Whiter Yellow */
 .search,
 .search-button,
 #search-bar,
@@ -93,21 +121,7 @@ input[type="text"] {
   border-radius: 4px !important;
 }
 
-/* 6. Graph View -> Lighter Yellow with NO Outlines */
-.graph,
-.graph-outer,
-.graph-view,
-#graph-container,
-.graph > div,
-.graph-component {
-  background-color: #faf5e8 !important;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  border-radius: 6px !important;
-}
-
-/* 7. Text Elements & Font Override */
+/* 8. Text Elements & Font Override */
 article,
 article *,
 .page-title,
@@ -123,7 +137,7 @@ h1, h2, h3, h4, h5, h6, .article-title {
   color: #000000 !important;
 }
 
-/* 8. Links & Interactive Elements */
+/* 9. Links & Interactive Elements */
 a,
 a.internal,
 a.external,
@@ -140,10 +154,10 @@ a:hover,
   color: #b22222 !important;
 }
 
-/* 9. Popovers (Hover Cards) */
+/* 10. Popovers (Hover Cards) */
 .popover,
 .popover-inner {
-  background-color: #faf5e8 !important;
+  background-color: #fdf8eb !important;
   border: 2px solid #8b0000 !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
 }
