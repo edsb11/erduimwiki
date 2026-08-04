@@ -185,7 +185,7 @@ input[type="text"] {
   border-radius: 4px !important;
 }
 
-/* 10. Text Styling & Font Override */
+/* 10. Text Styling, Font Override & Logo Integration */
 article,
 article *,
 .page-title,
@@ -198,6 +198,27 @@ p, span, li, blockquote {
 
 h1, h2, h3, h4, h5, h6, .article-title {
   color: #000000 !important;
+}
+
+/* Page Title & Logo Injection */
+.page-title {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 1.8rem !important;
+}
+
+.page-title a::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 32px !important;
+  height: 32px !important;
+  background-image: url("./logo.png") !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  vertical-align: middle !important;
+  margin-right: 8px !important;
 }
 
 /* Links */
