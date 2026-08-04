@@ -45,36 +45,40 @@ body::before {
   ) !important;
 }
 
-/* 3. HARD FIX FOR WHITE VERTICAL LINES */
+/* 3. Grid Lines & Section Layout */
 .page {
-  background-color: #8b0000 !important; /* Fills grid gaps with red */
-  gap: 1px !important;                     /* Force 1px red divider line */
+  background-color: #8b0000 !important; /* Forces red divider lines in gaps */
+  gap: 1px !important;
 }
 
 .left,
-.right,
-.center,
-.center-container,
-div[class*="left"],
-div[class*="right"],
-div[class*="center"] {
+.right {
   background-color: #f3e5ab !important;
   border-color: #8b0000 !important;
   outline: none !important;
 }
 
-/* 4. Foreground Central Content (The Abyss / Text Area) -> Beige Paper Texture */
-.center,
-article,
-.article-title {
-  background-color: #fdf8eb !important; /* Lighter beige paper base */
+/* 4. Unified Center Section (Single Seamless Parchment Sheet) */
+.center {
+  background-color: #fdf8eb !important; /* Unified beige paper base */
   background-image: 
     radial-gradient(circle at 50% 50%, rgba(255, 250, 240, 0.5), rgba(230, 215, 180, 0.3)),
     radial-gradient(circle at 10% 20%, rgba(139, 69, 19, 0.04) 0%, transparent 50%),
     radial-gradient(circle at 90% 80%, rgba(139, 69, 19, 0.04) 0%, transparent 50%) !important;
-  padding: 1.5rem !important;
-  border-radius: 4px !important;
-  box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important; /* Inner soft paper shadow */
+  padding: 2rem !important;
+  border-color: #8b0000 !important;
+  box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
+}
+
+/* Remove separate inner boxes/backgrounds inside center */
+.center *,
+article,
+.article-title,
+.page-header,
+header {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 /* 5. Explorer Tree Fix -> Transparent Background */
