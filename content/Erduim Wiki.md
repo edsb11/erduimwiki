@@ -1,7 +1,7 @@
 
-### Welcome!
+ ### <center>**<font color="#4f6128">Welcome!</font>**</center>
 ---
-Erduim Wiki is an archive for worldubilding and keeping information about a universe made for a Dungeons and Dragons campaign ran by friends.
+<center>Erduim Wiki is an archive for worldubilding and keeping information about a universe made for a Dungeons and Dragons campaign ran by friends.</center>
 
 
 <div style="display: flex; gap: 10px;">
