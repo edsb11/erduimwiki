@@ -7,8 +7,8 @@
   --bodyFont: 'MedievalSharp', cursive, sans-serif !important;
 
   /* Base Colors */
-  --light: #f3e5ab !important;          /* Main background color */
-  --lightgray: #8b0000 !important;      /* Borders / Grid gap fills -> Dark Red */
+  --light: #f3e5ab !important;          /* Outer background color */
+  --lightgray: #8b0000 !important;      /* Grid line gaps -> Dark Red */
   --gray: #6b5c49 !important;           /* Secondary text / dates */
   --darkgray: #0f0d0a !important;       /* Plain text -> Dark black/brown */
   --dark: #000000 !important;           /* Headings -> Pure Black */
@@ -46,9 +46,9 @@ body::before {
   ) !important;
 }
 
-/* 3. Grid Lines & Outer Layout Fixes */
+/* 3. Grid Lines & Outer Column Layout */
 .page {
-  background-color: #8b0000 !important; /* Forces red divider lines in gaps */
+  background-color: #8b0000 !important; /* Red grid dividers */
   gap: 1px !important;
   min-height: 100vh !important;
 }
@@ -60,41 +60,43 @@ body::before {
   outline: none !important;
 }
 
-/* 4. Force Center Column to Stretch Full Height with Beige Paper */
+/* 4. Unified Center Section (Force Beige Parchment Full Height) */
+main,
+.center-container,
+.center,
+article,
+header,
+.page-header {
+  background-color: #fdf8eb !important; /* Unified beige paper base */
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 250, 240, 0.5), rgba(230, 215, 180, 0.3)),
+    radial-gradient(circle at 10% 20%, rgba(139, 69, 19, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(139, 69, 19, 0.04) 0%, transparent 50%) !important;
+  border-color: #8b0000 !important;
+  box-shadow: none !important;
+}
+
 .center-container,
 .center {
   display: flex !important;
   flex-direction: column !important;
   flex-grow: 1 !important;
   min-height: 100% !important;
-  background-color: #fdf8eb !important; /* Continuous beige paper base */
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(255, 250, 240, 0.5), rgba(230, 215, 180, 0.3)),
-    radial-gradient(circle at 10% 20%, rgba(139, 69, 19, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(139, 69, 19, 0.04) 0%, transparent 50%) !important;
-  border-color: #8b0000 !important;
-  box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
-}
-
-.center {
   padding: 2rem !important;
-}
-
-/* Force article and inner wrappers to stretch and match background */
-article,
-header,
-.page-header {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-  flex-grow: 1 !important;
+  box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
 }
 
 article * {
   background-color: transparent !important;
 }
 
-/* 5. Explorer Tree Fix -> Transparent Background */
+/* 5. Hide Footnote / Footer Completely */
+footer,
+.footer {
+  display: none !important;
+}
+
+/* 6. Explorer Tree Fix -> Transparent Background */
 .explorer,
 .explorer-content,
 .explorer-ul,
@@ -111,7 +113,7 @@ div[class*="explorer"] {
   border-radius: 4px;
 }
 
-/* 6. Graph View -> Matching Lighter Beige */
+/* 7. Graph View -> Matching Lighter Beige */
 .graph,
 .graph-outer,
 .graph-view,
@@ -126,7 +128,7 @@ canvas {
   border-radius: 6px !important;
 }
 
-/* 7. Page Dividers (<hr>) -> Dark Brown */
+/* 8. Page Dividers (<hr>) -> Dark Brown */
 hr, 
 article hr {
   border: none !important;
@@ -135,7 +137,7 @@ article hr {
   opacity: 0.8 !important;
 }
 
-/* 8. Search Bar -> Whiter Yellow */
+/* 9. Search Bar */
 .search,
 .search-button,
 #search-bar,
@@ -146,19 +148,6 @@ input[type="text"] {
   border: 1px solid #8b0000 !important;
   color: #0f0d0a !important;
   border-radius: 4px !important;
-}
-
-/* 9. Footer -> Match Central Parchment Seamlessly */
-footer {
-  background-color: #fdf8eb !important;
-  border-top: 1px solid rgba(139, 0, 0, 0.2) !important;
-  color: #6b5c49 !important;
-  padding: 1rem 2rem !important;
-  margin-top: auto !important; /* Pushes footer to bottom */
-}
-
-footer a {
-  color: #8b0000 !important;
 }
 
 /* 10. Text Styling & Font Override */
