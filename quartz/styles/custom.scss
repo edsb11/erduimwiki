@@ -30,16 +30,20 @@ body,
   margin: 0 !important;
 }
 
-/* 3. Grid Lines & Layout Positioning Fixes */
+/* 3. Grid Lines, Layout Positioning & Centering */
 .page {
   background-color: #8b0000 !important; /* Red grid dividers */
   gap: 1px !important;
   min-height: 100vh !important;
   display: flex !important;
+  justify-content: center !important;  /* Centering structural layout */
+  max-width: 1400px !important;        /* Constrains wide screen overflow */
+  margin: 0 auto !important;           /* Centers site in browser window */
   position: relative !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Ensure left sidebar remains relative and does NOT overlap central content */
+/* Sidebar sizing and alignment */
 .left {
   background-color: #f3e5ab !important;
   border-color: #8b0000 !important;
@@ -47,12 +51,15 @@ body,
   position: relative !important;
   z-index: 10 !important;
   flex-shrink: 0 !important;
+  width: 260px !important;
 }
 
 .right {
   background-color: #f3e5ab !important;
   border-color: #8b0000 !important;
   outline: none !important;
+  flex-shrink: 0 !important;
+  width: 300px !important;
 }
 
 /* 4. Central Main Column with Custom Paper Background Texture */
@@ -68,6 +75,7 @@ main {
   border-color: #8b0000 !important;
   position: relative !important;
   z-index: 1 !important;
+  max-width: 840px !important;         /* Prevents main text area from over-expanding */
 
   /* Base Parchment Color Fallback */
   background-color: #fdf8eb !important;
@@ -138,7 +146,7 @@ svg.lucide-book-open,
 div[class*="explorer"] {
   background-color: transparent !important;
   background: transparent !important;
-  position: static !important; /* Force static positioning inside left column */
+  position: static !important;
 }
 
 .explorer .folder-container:hover,
@@ -200,14 +208,14 @@ h1, h2, h3, h4, h5, h6, .article-title {
   color: #000000 !important;
 }
 
-/* Page Title & Logo Injection */
+/* Page Title & Centered Logo Injection */
 .page-title {
   display: flex !important;
-  flex-direction: column !important;  /* Stacks logo on top, text below */
-  align-items: center !important;      /* Centers both logo and text */
+  flex-direction: column !important;
+  align-items: center !important;
   justify-content: center !important;
   text-align: center !important;
-  font-size: 1.3rem !important;        /* Makes page title smaller */
+  font-size: 1.3rem !important;
   margin-bottom: 0.5rem !important;
 }
 
@@ -215,20 +223,21 @@ h1, h2, h3, h4, h5, h6, .article-title {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  font-size: 1.3rem !important;        /* Ensures link text inherits smaller size */
+  font-size: 1.3rem !important;
 }
 
 .page-title a::before {
   content: "" !important;
   display: block !important;
-  width: 54px !important;              /* Increased logo width */
-  height: 54px !important;             /* Increased logo height */
+  width: 54px !important;
+  height: 54px !important;
   background-image: url("./logo.png") !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
-  margin: 0 0 8px 0 !important;        /* Spacing below logo before text */
+  margin: 0 0 8px 0 !important;
 }
+
 /* Links */
 a,
 a.internal,
@@ -259,19 +268,20 @@ a:hover,
     width: 100% !important;
   }
 
-  /* Stack layout top-to-bottom */
   .page {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
+    max-width: 100vw !important;
     padding: 0 !important;
     gap: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
   }
 
-  /* Transform Left Sidebar into a Top Bar */
   .left {
     display: flex !important;
-    flex-direction: column-reverse !important; /* Puts search bar at the bottom, buttons above */
+    flex-direction: column-reverse !important;
     width: 100% !important;
     max-width: 100% !important;
     padding: 1rem !important;
@@ -280,7 +290,10 @@ a:hover,
     position: relative !important;
   }
 
-  /* Make links / text buttons sit side-by-side horizontally */
+  .right {
+    width: 100% !important;
+  }
+
   .explorer,
   .explorer-content,
   .explorer-ul,
@@ -299,13 +312,12 @@ a:hover,
   .explorer li,
   .explorer div,
   .explorer a {
-    white-space: nowrap !important; /* Prevents single letters stacking vertically */
+    white-space: nowrap !important;
     display: inline-block !important;
     font-size: 1rem !important;
     text-align: center !important;
   }
 
-  /* Make Search Bar span the entire width */
   .search,
   .search-button,
   #search-bar,
@@ -328,7 +340,6 @@ a:hover,
     box-sizing: border-box !important;
   }
 
-  /* Main content container tweaks */
   .center-container,
   .center,
   main {
@@ -338,7 +349,6 @@ a:hover,
     box-sizing: border-box !important;
   }
 
-  /* Responsive Infoboxes & Images */
   div[style*="float: right"],
   div[style*="float:left"] {
     float: none !important;
@@ -348,7 +358,6 @@ a:hover,
     box-sizing: border-box !important;
   }
 
-  /* Card Grid Collapsing */
   div[style*="grid-template-columns"],
   .grid-container {
     grid-template-columns: 1fr !important;
