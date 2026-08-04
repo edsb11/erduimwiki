@@ -58,23 +58,12 @@ p, a, span, li {
   font-family: 'MedievalSharp', cursive, sans-serif !important;
 }
 
-/* Parchment Background Texture */
-body, 
-[data-theme="light"] body {
-  background-image: url('/static/paper-bg.jpg') !important;
-  background-repeat: repeat;             /* Tiles the texture seamlessly */
-  background-attachment: fixed;          /* Keeps texture stationary while scrolling */
-  background-color: #f4ecd8;             /* Warm fallback color while loading */
-}
-
-/* Optional: Make main containers slightly translucent so the texture bleeds through nicely */
-:root {
-  --light: rgba(255, 255, 255, 0.45) !important; 
-}
-
-/* Pure CSS Old Paper Texture */
-body, 
-[data-theme="light"] body {
+/* 1. Apply texture to the entire page HTML & Body */
+html,
+body,
+#quartz-root,
+.page,
+.center {
   background-color: #f3e5ab !important; /* Soft parchment base */
   background-image: 
     radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6), rgba(210, 180, 140, 0.4)),
@@ -83,7 +72,17 @@ body,
   background-attachment: fixed !important;
 }
 
-/* Make page backgrounds blend with the CSS parchment */
+/* 2. Override default light background variables so containers are transparent */
 :root {
-  --light: rgba(247, 238, 215, 0.8) !important;
+  --light: transparent !important;
+  --lightgray: rgba(139, 69, 19, 0.15) !important;
+}
+
+/* 3. Give the Hover Popover Card its own clean background so it stays readable */
+.popover,
+.popover-inner {
+  background-color: #fefcf6 !important;
+  background-image: none !important;
+  border: 1px solid #8b3a2b !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
 }
