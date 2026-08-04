@@ -19,7 +19,7 @@
   --highlight: rgba(139, 0, 0, 0.15) !important;
 }
 
-/* 2. Global Vignette & Outer Background */
+/* 2. Outer Background (Vignette Removed) */
 html,
 body,
 #quartz-root {
@@ -28,24 +28,6 @@ body,
   min-height: 100vh !important;
   height: 100% !important;
   margin: 0 !important;
-}
-
-/* Dark vignette overlay around viewport edges */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 999;
-  background: radial-gradient(
-    circle, 
-    rgba(0, 0, 0, 0) 60%, 
-    rgba(30, 15, 5, 0.35) 90%, 
-    rgba(15, 5, 0, 0.6) 100%
-  ) !important;
 }
 
 /* 3. Grid Lines & Outer Column Layout */
@@ -74,16 +56,18 @@ main {
   padding: 2rem !important;
   border-color: #8b0000 !important;
 
-  /* Custom paper texture image */
+  /* Base Parchment Color Fallback */
   background-color: #fdf8eb !important;
-  background-image: url("./paper-bg2.jpg") !important;
+  
+  /* Paper Parchment Image Path (resolves from content/static directory) */
+  background-image: url("./paper-bg2.png") !important;
   background-repeat: repeat !important;
   background-position: top left !important;
   background-size: auto !important;
   box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
 }
 
-/* Force inner elements to be transparent */
+/* Force inner elements to be transparent over paper background */
 .center *,
 .center-container *,
 main *,
@@ -111,7 +95,7 @@ footer,
   margin: 0 !important;
 }
 
-/* Strictly target and hide Theme Toggle (sun/moon) and Reader Mode (book button) */
+/* Hide theme toggle (sun/moon) and reader mode (book button) */
 .darkmode,
 .reader-mode,
 .read-mode,
@@ -223,4 +207,53 @@ a:hover,
   background-color: #fdf8eb !important;
   border: 2px solid #8b0000 !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* 11. Mobile Responsiveness Fixes */
+@media (max-width: 768px) {
+  html, body, #quartz-root {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+
+  .page {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .center-container,
+  .center,
+  main {
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Responsive Infoboxes & Images */
+  div[style*="float: right"],
+  div[style*="float:left"] {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 1rem 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Card Grid Collapsing */
+  div[style*="grid-template-columns"],
+  .grid-container {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+
+  .graph,
+  .graph-outer,
+  #graph-container {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
