@@ -76,14 +76,14 @@ main {
 
   /* Custom paper texture image */
   background-color: #fdf8eb !important;
-  background-image: url("/static/paper-bg2.png") !important; /* Update extension (.jpg/.png) as needed */
+  background-image: url("/static/paper-bg2.png") !important;
   background-repeat: repeat !important;
   background-position: top left !important;
   background-size: auto !important;
   box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
 }
 
-/* Force all inner wrappers/elements to be transparent so white canvas never shows */
+/* Force inner elements to be transparent */
 .center *,
 .center-container *,
 main *,
@@ -102,13 +102,22 @@ code {
   border-radius: 0 !important;
 }
 
-/* 5. Hide Footnote / Footer Completely */
+/* 5. Hide Footer & Unwanted Header Buttons */
 footer,
 .footer {
   display: none !important;
   height: 0 !important;
   padding: 0 !important;
   margin: 0 !important;
+}
+
+/* Hide theme toggle (sun/moon) and reader mode (book) */
+.darkmode,
+.reader-mode,
+button:has(.lucide-sun),
+button:has(.lucide-moon),
+button:has(.lucide-book-open) {
+  display: none !important;
 }
 
 /* 6. Explorer Tree Fix -> Transparent Background */
