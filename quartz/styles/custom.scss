@@ -60,34 +60,45 @@ body::before {
   outline: none !important;
 }
 
-/* 4. Unified Center Section (Force Beige Parchment Full Height) */
-main,
-.center-container,
+/* 4. Central Column: Seamless Paper Page with Procedural Texture */
 .center,
-article,
-header,
-.page-header {
-  background-color: #fdf8eb !important; /* Unified beige paper base */
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(255, 250, 240, 0.5), rgba(230, 215, 180, 0.3)),
-    radial-gradient(circle at 10% 20%, rgba(139, 69, 19, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(139, 69, 19, 0.04) 0%, transparent 50%) !important;
-  border-color: #8b0000 !important;
-  box-shadow: none !important;
-}
-
 .center-container,
-.center {
+main {
   display: flex !important;
   flex-direction: column !important;
   flex-grow: 1 !important;
   min-height: 100% !important;
   padding: 2rem !important;
+  border-color: #8b0000 !important;
   box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
+
+  /* Base beige paper color + procedural noise layer */
+  background-color: #fdf8eb !important;
+  background-image: 
+    /* Soft light variations */
+    radial-gradient(circle at 50% 50%, rgba(255, 250, 240, 0.6), rgba(230, 215, 180, 0.3)),
+    /* Subtle aged spots */
+    radial-gradient(circle at 15% 25%, rgba(139, 69, 19, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(139, 69, 19, 0.04) 0%, transparent 50%),
+    /* Micro-grain texture */
+    repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.015) 0px, rgba(0, 0, 0, 0.015) 2px, transparent 2px, transparent 4px) !important;
 }
 
-article * {
+/* Force all inner elements to be transparent so text overlays directly on paper */
+.center *,
+article,
+article *,
+header,
+.page-header,
+.article-title,
+.content-meta,
+blockquote,
+pre,
+code {
+  background: transparent !important;
   background-color: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
 
 /* 5. Hide Footnote / Footer Completely */
