@@ -1,25 +1,25 @@
 @use "./variables.scss" as *;
 
-/* 1. Global Parchment Backgrounds & Dark Red Accent Variables */
+/* 1. Global Variables & Color Palette */
 :root {
   /* Fonts */
   --headerFont: 'MedievalSharp', cursive, sans-serif !important;
   --bodyFont: 'MedievalSharp', cursive, sans-serif !important;
 
-  /* Parchment Colors */
+  /* Base Colors */
   --light: #f3e5ab !important;          /* Main parchment background */
-  --lightgray: #e6d39a !important;      /* Borders / subtle containers */
-  --gray: #7a6a53 !important;           /* Secondary text / dates */
-  --darkgray: #2b2219 !important;       /* Main readable body text */
-  --dark: #1a0f07 !important;           /* Deep brown/black for headings */
+  --lightgray: #8b0000 !important;      /* Vertical layout borders -> Dark Red */
+  --gray: #6b5c49 !important;           /* Secondary text / dates */
+  --darkgray: #0f0d0a !important;       /* Plain text -> Dark black/brown for maximum contrast */
+  --dark: #000000 !important;           /* Headings -> Pure Black */
 
-  /* Dark Red Accents (Replaces Blue/Purple Links and Highlights) */
-  --secondary: #8b0000 !important;      /* Dark Red / Crimson for links & accents */
-  --tertiary: #b22222 !important;       /* Firebrick red on hover */
-  --highlight: rgba(139, 0, 0, 0.15) !important; /* Soft red highlight */
+  /* Accents & Links */
+  --secondary: #8b0000 !important;      /* Links & accents -> Dark Red */
+  --tertiary: #b22222 !important;       /* Link hover -> Firebrick Red */
+  --highlight: rgba(139, 0, 0, 0.15) !important;
 }
 
-/* 2. Apply Parchment Yellow Base to ALL Layout Containers */
+/* 2. Page & Layout Containers */
 html,
 body,
 #quartz-root,
@@ -39,25 +39,68 @@ article {
   background-attachment: fixed !important;
 }
 
-/* 3. Force MedievalSharp Font on All Text Elements */
+/* Vertical layout dividing lines -> Red */
+.center, .left, .right, header, footer, article {
+  border-color: #8b0000 !important;
+}
+
+/* 3. Page Dividers (<hr>) -> Dark Brown */
+hr, 
+article hr {
+  border: none !important;
+  border-top: 2px solid #4a2e1b !important;
+  margin: 2rem 0 !important;
+  opacity: 0.8 !important;
+}
+
+/* 4. Search Bar -> Whiter Yellow */
+.search,
+.search-button,
+#search-bar,
+.search-container input,
+.search-bar input,
+input[type="text"] {
+  background-color: #fdfbf2 !important;
+  border: 1px solid #8b0000 !important;
+  color: #0f0d0a !important;
+  border-radius: 4px !important;
+}
+
+/* 5. Graph View Box -> Lighter Yellow */
+.graph,
+.graph-outer,
+.graph-view,
+#graph-container,
+.graph > div {
+  background-color: #faf5e8 !important;
+  border: 1px solid #8b0000 !important;
+  border-radius: 6px !important;
+}
+
+/* 6. Text Elements & Font Override */
 article,
 article *,
 .page-title,
 .article-title,
 h1, h2, h3, h4, h5, h6,
-p, span, li {
+p, span, li, blockquote {
   font-family: 'MedievalSharp', cursive, sans-serif !important;
+  color: #0f0d0a !important; /* Force darker body text */
 }
 
-/* 4. Force Dark Red on All Links, Breadcrumbs, and Accents */
+/* Headings -> Pure Black */
+h1, h2, h3, h4, h5, h6, .article-title {
+  color: #000000 !important;
+}
+
+/* 7. Links & Interactive Elements */
 a,
 a.internal,
 a.external,
 .breadcrumb-element,
 .breadcrumbs a,
 .page-title a,
-.footer a,
-.search-button {
+.footer a {
   color: #8b0000 !important;
 }
 
@@ -67,10 +110,10 @@ a:hover,
   color: #b22222 !important;
 }
 
-/* 5. Style Hover Popovers cleanly with a slight golden card look */
+/* 8. Popovers (Hover Cards) */
 .popover,
 .popover-inner {
-  background-color: #fcf5e5 !important;
+  background-color: #faf5e8 !important;
   border: 2px solid #8b0000 !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
 }
