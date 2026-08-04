@@ -45,7 +45,7 @@ body::before {
   ) !important;
 }
 
-/* 3. Grid Lines & Section Layout */
+/* 3. Grid Lines & Outer Column Backgrounds */
 .page {
   background-color: #8b0000 !important; /* Forces red divider lines in gaps */
   gap: 1px !important;
@@ -58,27 +58,29 @@ body::before {
   outline: none !important;
 }
 
-/* 4. Unified Center Section (Single Seamless Parchment Sheet) */
-.center {
-  background-color: #fdf8eb !important; /* Unified beige paper base */
+/* 4. Unified Center Section (Entire Article Sheet in Beige Paper) */
+.center,
+.center-container,
+article,
+header,
+.page-header {
+  background-color: #fdf8eb !important; /* Continuous beige paper base */
   background-image: 
     radial-gradient(circle at 50% 50%, rgba(255, 250, 240, 0.5), rgba(230, 215, 180, 0.3)),
     radial-gradient(circle at 10% 20%, rgba(139, 69, 19, 0.04) 0%, transparent 50%),
     radial-gradient(circle at 90% 80%, rgba(139, 69, 19, 0.04) 0%, transparent 50%) !important;
-  padding: 2rem !important;
   border-color: #8b0000 !important;
+  box-shadow: none !important;
+}
+
+.center {
+  padding: 2rem !important;
   box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
 }
 
-/* Remove separate inner boxes/backgrounds inside center */
-.center *,
-article,
-.article-title,
-.page-header,
-header {
-  background: transparent !important;
+/* Ensures inner text containers inherit the paper background color */
+article * {
   background-color: transparent !important;
-  box-shadow: none !important;
 }
 
 /* 5. Explorer Tree Fix -> Transparent Background */
@@ -135,7 +137,19 @@ input[type="text"] {
   border-radius: 4px !important;
 }
 
-/* 9. Text Styling & Font Override */
+/* 9. Footer -> Match Central Parchment */
+footer {
+  background-color: #fdf8eb !important;
+  border-top: 1px solid rgba(139, 0, 0, 0.2) !important;
+  color: #6b5c49 !important;
+  padding: 1rem 2rem !important;
+}
+
+footer a {
+  color: #8b0000 !important;
+}
+
+/* 10. Text Styling & Font Override */
 article,
 article *,
 .page-title,
@@ -150,20 +164,18 @@ h1, h2, h3, h4, h5, h6, .article-title {
   color: #000000 !important;
 }
 
-/* 10. Links & Interactive Highlights */
+/* Links */
 a,
 a.internal,
 a.external,
 .breadcrumb-element,
 .breadcrumbs a,
-.page-title a,
-.footer a {
+.page-title a {
   color: #8b0000 !important;
 }
 
 a:hover,
-.breadcrumbs a:hover,
-.footer a:hover {
+.breadcrumbs a:hover {
   color: #b22222 !important;
 }
 
@@ -173,9 +185,4 @@ a:hover,
   background-color: #fdf8eb !important;
   border: 2px solid #8b0000 !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
-}
-
-/* Hide Footer Completely */
-footer {
-  display: none !important;
 }
