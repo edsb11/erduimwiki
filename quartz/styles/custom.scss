@@ -111,13 +111,26 @@ footer,
   margin: 0 !important;
 }
 
-/* Hide theme toggle (sun/moon) and reader mode (book) */
+/* Strictly target and hide Theme Toggle (sun/moon) and Reader Mode (book button) */
 .darkmode,
 .reader-mode,
-button:has(.lucide-sun),
-button:has(.lucide-moon),
-button:has(.lucide-book-open) {
+.read-mode,
+button.reader-mode,
+button[aria-label*="reader"],
+button[aria-label*="Reader"],
+a[aria-label*="reader"],
+button:has(svg.lucide-book-open),
+button:has(svg.lucide-sun),
+button:has(svg.lucide-moon),
+svg.lucide-book-open,
+.left button:not(.search-button) {
   display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 /* 6. Explorer Tree Fix -> Transparent Background */
