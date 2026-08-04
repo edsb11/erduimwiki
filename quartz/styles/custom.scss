@@ -25,6 +25,7 @@ body,
 #quartz-root {
   background-color: #f3e5ab !important;
   background-attachment: fixed !important;
+  min-height: 100vh !important;
 }
 
 /* Dark vignette overlay around viewport edges */
@@ -45,10 +46,11 @@ body::before {
   ) !important;
 }
 
-/* 3. Grid Lines & Outer Column Backgrounds */
+/* 3. Grid Lines & Outer Layout Fixes */
 .page {
   background-color: #8b0000 !important; /* Forces red divider lines in gaps */
   gap: 1px !important;
+  min-height: 100vh !important;
 }
 
 .left,
@@ -58,27 +60,36 @@ body::before {
   outline: none !important;
 }
 
-/* 4. Unified Center Section (Entire Article Sheet in Beige Paper) */
-.center,
+/* 4. Force Center Column to Stretch Full Height with Beige Paper */
 .center-container,
-article,
-header,
-.page-header {
+.center {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+  min-height: 100% !important;
   background-color: #fdf8eb !important; /* Continuous beige paper base */
   background-image: 
     radial-gradient(circle at 50% 50%, rgba(255, 250, 240, 0.5), rgba(230, 215, 180, 0.3)),
     radial-gradient(circle at 10% 20%, rgba(139, 69, 19, 0.04) 0%, transparent 50%),
     radial-gradient(circle at 90% 80%, rgba(139, 69, 19, 0.04) 0%, transparent 50%) !important;
   border-color: #8b0000 !important;
-  box-shadow: none !important;
+  box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
 }
 
 .center {
   padding: 2rem !important;
-  box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
 }
 
-/* Ensures inner text containers inherit the paper background color */
+/* Force article and inner wrappers to stretch and match background */
+article,
+header,
+.page-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  flex-grow: 1 !important;
+}
+
 article * {
   background-color: transparent !important;
 }
@@ -100,7 +111,7 @@ div[class*="explorer"] {
   border-radius: 4px;
 }
 
-/* 6. Graph View -> Matching Lighter Beige (No Outlines) */
+/* 6. Graph View -> Matching Lighter Beige */
 .graph,
 .graph-outer,
 .graph-view,
@@ -137,12 +148,13 @@ input[type="text"] {
   border-radius: 4px !important;
 }
 
-/* 9. Footer -> Match Central Parchment */
+/* 9. Footer -> Match Central Parchment Seamlessly */
 footer {
   background-color: #fdf8eb !important;
   border-top: 1px solid rgba(139, 0, 0, 0.2) !important;
   color: #6b5c49 !important;
   padding: 1rem 2rem !important;
+  margin-top: auto !important; /* Pushes footer to bottom */
 }
 
 footer a {
