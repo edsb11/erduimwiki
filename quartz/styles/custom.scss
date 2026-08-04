@@ -30,14 +30,25 @@ body,
   margin: 0 !important;
 }
 
-/* 3. Grid Lines & Outer Column Layout */
+/* 3. Grid Lines & Layout Positioning Fixes */
 .page {
   background-color: #8b0000 !important; /* Red grid dividers */
   gap: 1px !important;
   min-height: 100vh !important;
+  display: flex !important;
+  position: relative !important;
 }
 
-.left,
+/* Ensure left sidebar remains relative and does NOT overlap central content */
+.left {
+  background-color: #f3e5ab !important;
+  border-color: #8b0000 !important;
+  outline: none !important;
+  position: relative !important;
+  z-index: 10 !important;
+  flex-shrink: 0 !important;
+}
+
 .right {
   background-color: #f3e5ab !important;
   border-color: #8b0000 !important;
@@ -55,11 +66,13 @@ main {
   height: 100% !important;
   padding: 2rem !important;
   border-color: #8b0000 !important;
+  position: relative !important;
+  z-index: 1 !important;
 
   /* Base Parchment Color Fallback */
   background-color: #fdf8eb !important;
   
-  /* Paper Parchment Image Path (resolves from content/static directory) */
+  /* Paper Parchment Image Path */
   background-image: url("./paper-bg2.png") !important;
   background-repeat: repeat !important;
   background-position: top left !important;
@@ -117,7 +130,7 @@ svg.lucide-book-open,
   margin: 0 !important;
 }
 
-/* 6. Explorer Tree Fix -> Transparent Background */
+/* 6. Explorer Tree Fix -> Prevent Floating Overlap */
 .explorer,
 .explorer-content,
 .explorer-ul,
@@ -125,6 +138,7 @@ svg.lucide-book-open,
 div[class*="explorer"] {
   background-color: transparent !important;
   background: transparent !important;
+  position: static !important; /* Force static positioning inside left column */
 }
 
 .explorer .folder-container:hover,
@@ -209,7 +223,7 @@ a:hover,
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
 }
 
-/* 11. Mobile Responsiveness Fixes */
+/* 11. Mobile Responsiveness Fixes & Stacking Overlap Prevention */
 @media (max-width: 768px) {
   html, body, #quartz-root {
     overflow-x: hidden !important;
@@ -224,6 +238,14 @@ a:hover,
     gap: 0 !important;
   }
 
+  .left {
+    width: 100% !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+  }
+
   .center-container,
   .center,
   main {
@@ -231,6 +253,7 @@ a:hover,
     max-width: 100vw !important;
     padding: 1rem !important;
     box-sizing: border-box !important;
+    position: relative !important;
   }
 
   /* Responsive Infoboxes & Images */
