@@ -10,7 +10,7 @@
   --light: #f3e5ab !important;          /* Main parchment background */
   --lightgray: #8b0000 !important;      /* Vertical layout borders -> Dark Red */
   --gray: #6b5c49 !important;           /* Secondary text / dates */
-  --darkgray: #0f0d0a !important;       /* Plain text -> Dark black/brown for maximum contrast */
+  --darkgray: #0f0d0a !important;       /* Plain text -> Dark black/brown */
   --dark: #000000 !important;           /* Headings -> Pure Black */
 
   /* Accents & Links */
@@ -19,7 +19,7 @@
   --highlight: rgba(139, 0, 0, 0.15) !important;
 }
 
-/* 2. Page & Layout Containers */
+/* 2. Vignette Background Effect & Parchment Texture */
 html,
 body,
 #quartz-root,
@@ -32,19 +32,46 @@ header,
 footer,
 article {
   background-color: #f3e5ab !important;
-  background-image: 
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3), rgba(210, 180, 140, 0.3)),
-    radial-gradient(circle at 20% 20%, rgba(139, 69, 19, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(139, 69, 19, 0.05) 0%, transparent 40%) !important;
   background-attachment: fixed !important;
 }
 
-/* Vertical layout dividing lines -> Red */
-.center, .left, .right, header, footer, article {
-  border-color: #8b0000 !important;
+/* Adds the dark vignette overlay around the screen edges */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* Allows clicking through the vignette */
+  z-index: 999;
+  background: radial-gradient(
+    circle, 
+    rgba(0, 0, 0, 0) 60%, 
+    rgba(30, 15, 5, 0.35) 90%, 
+    rgba(15, 5, 0, 0.6) 100%
+  ) !important;
 }
 
-/* 3. Page Dividers (<hr>) -> Dark Brown */
+/* 3. FIX: Force Vertical Lines to Dark Red */
+.page,
+.center,
+.left,
+.right,
+.center-container,
+div[class*="left"],
+div[class*="right"],
+div[class*="center"] {
+  border-color: #8b0000 !important;
+  outline-color: #8b0000 !important;
+}
+
+/* Remove default white gaps/margins in Quartz grid layout */
+.page > * {
+  background-color: transparent !important;
+}
+
+/* 4. Page Dividers (<hr>) -> Dark Brown */
 hr, 
 article hr {
   border: none !important;
@@ -53,7 +80,7 @@ article hr {
   opacity: 0.8 !important;
 }
 
-/* 4. Search Bar -> Whiter Yellow */
+/* 5. Search Bar -> Whiter Yellow */
 .search,
 .search-button,
 #search-bar,
@@ -66,18 +93,21 @@ input[type="text"] {
   border-radius: 4px !important;
 }
 
-/* 5. Graph View Box -> Lighter Yellow */
+/* 6. Graph View -> Lighter Yellow with NO Outlines */
 .graph,
 .graph-outer,
 .graph-view,
 #graph-container,
-.graph > div {
+.graph > div,
+.graph-component {
   background-color: #faf5e8 !important;
-  border: 1px solid #8b0000 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   border-radius: 6px !important;
 }
 
-/* 6. Text Elements & Font Override */
+/* 7. Text Elements & Font Override */
 article,
 article *,
 .page-title,
@@ -85,7 +115,7 @@ article *,
 h1, h2, h3, h4, h5, h6,
 p, span, li, blockquote {
   font-family: 'MedievalSharp', cursive, sans-serif !important;
-  color: #0f0d0a !important; /* Force darker body text */
+  color: #0f0d0a !important;
 }
 
 /* Headings -> Pure Black */
@@ -93,7 +123,7 @@ h1, h2, h3, h4, h5, h6, .article-title {
   color: #000000 !important;
 }
 
-/* 7. Links & Interactive Elements */
+/* 8. Links & Interactive Elements */
 a,
 a.internal,
 a.external,
@@ -110,7 +140,7 @@ a:hover,
   color: #b22222 !important;
 }
 
-/* 8. Popovers (Hover Cards) */
+/* 9. Popovers (Hover Cards) */
 .popover,
 .popover-inner {
   background-color: #faf5e8 !important;
