@@ -203,24 +203,32 @@ h1, h2, h3, h4, h5, h6, .article-title {
 /* Page Title & Logo Injection */
 .page-title {
   display: flex !important;
+  flex-direction: column !important;  /* Stacks logo on top, text below */
+  align-items: center !important;      /* Centers both logo and text */
+  justify-content: center !important;
+  text-align: center !important;
+  font-size: 1.3rem !important;        /* Makes page title smaller */
+  margin-bottom: 0.5rem !important;
+}
+
+.page-title a {
+  display: flex !important;
+  flex-direction: column !important;
   align-items: center !important;
-  gap: 10px !important;
-  font-size: 1.8rem !important;
+  font-size: 1.3rem !important;        /* Ensures link text inherits smaller size */
 }
 
 .page-title a::before {
   content: "" !important;
-  display: inline-block !important;
-  width: 32px !important;
-  height: 32px !important;
+  display: block !important;
+  width: 54px !important;              /* Increased logo width */
+  height: 54px !important;             /* Increased logo height */
   background-image: url("./logo.png") !important;
   background-size: contain !important;
   background-repeat: no-repeat !important;
   background-position: center !important;
-  vertical-align: middle !important;
-  margin-right: 8px !important;
+  margin: 0 0 8px 0 !important;        /* Spacing below logo before text */
 }
-
 /* Links */
 a,
 a.internal,
