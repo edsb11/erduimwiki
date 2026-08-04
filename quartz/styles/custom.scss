@@ -58,31 +58,79 @@ p, a, span, li {
   font-family: 'MedievalSharp', cursive, sans-serif !important;
 }
 
-/* 1. Apply texture to the entire page HTML & Body */
+@use "./variables.scss" as *;
+
+/* 1. Global Parchment Backgrounds & Dark Red Accent Variables */
+:root {
+  /* Fonts */
+  --headerFont: 'MedievalSharp', cursive, sans-serif !important;
+  --bodyFont: 'MedievalSharp', cursive, sans-serif !important;
+
+  /* Parchment Colors */
+  --light: #f3e5ab !important;          /* Main parchment background */
+  --lightgray: #e6d39a !important;      /* Borders / subtle containers */
+  --gray: #7a6a53 !important;           /* Secondary text / dates */
+  --darkgray: #2b2219 !important;       /* Main readable body text */
+  --dark: #1a0f07 !important;           /* Deep brown/black for headings */
+
+  /* Dark Red Accents (Replaces Blue/Purple Links and Highlights) */
+  --secondary: #8b0000 !important;      /* Dark Red / Crimson for links & accents */
+  --tertiary: #b22222 !important;       /* Firebrick red on hover */
+  --highlight: rgba(139, 0, 0, 0.15) !important; /* Soft red highlight */
+}
+
+/* 2. Apply Parchment Yellow Base to ALL Layout Containers */
 html,
 body,
 #quartz-root,
 .page,
-.center {
-  background-color: #f3e5ab !important; /* Soft parchment base */
+.page-header,
+.center,
+.left,
+.right,
+header,
+footer,
+article {
+  background-color: #f3e5ab !important;
   background-image: 
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6), rgba(210, 180, 140, 0.4)),
-    radial-gradient(circle at 20% 20%, rgba(139, 69, 19, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(139, 69, 19, 0.08) 0%, transparent 40%) !important;
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3), rgba(210, 180, 140, 0.3)),
+    radial-gradient(circle at 20% 20%, rgba(139, 69, 19, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(139, 69, 19, 0.05) 0%, transparent 40%) !important;
   background-attachment: fixed !important;
 }
 
-/* 2. Override default light background variables so containers are transparent */
-:root {
-  --light: transparent !important;
-  --lightgray: rgba(139, 69, 19, 0.15) !important;
+/* 3. Force MedievalSharp Font on All Text Elements */
+article,
+article *,
+.page-title,
+.article-title,
+h1, h2, h3, h4, h5, h6,
+p, span, li {
+  font-family: 'MedievalSharp', cursive, sans-serif !important;
 }
 
-/* 3. Give the Hover Popover Card its own clean background so it stays readable */
+/* 4. Force Dark Red on All Links, Breadcrumbs, and Accents */
+a,
+a.internal,
+a.external,
+.breadcrumb-element,
+.breadcrumbs a,
+.page-title a,
+.footer a,
+.search-button {
+  color: #8b0000 !important;
+}
+
+a:hover,
+.breadcrumbs a:hover,
+.footer a:hover {
+  color: #b22222 !important;
+}
+
+/* 5. Style Hover Popovers cleanly with a slight golden card look */
 .popover,
 .popover-inner {
-  background-color: #fefcf6 !important;
-  background-image: none !important;
-  border: 1px solid #8b3a2b !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+  background-color: #fcf5e5 !important;
+  border: 2px solid #8b0000 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
 }
