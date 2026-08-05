@@ -1,13 +1,9 @@
 @use "./variables.scss" as *;
 
-/* 1. Global Variables & Color Palette */
+/* 1. Global Variables & Color Palette Overrides */
 :root {
-  /* Fonts */
-  --headerFont: 'MedievalSharp', cursive, sans-serif !important;
-  --bodyFont: 'MedievalSharp', cursive, sans-serif !important;
-
-  /* Base Colors */
-  --light: #f3e5ab !important;          /* Outer background color */
+  /* Core Quartz CSS Variable Overrides */
+  --light: #f3e5ab !important;          /* Background color */
   --lightgray: #8b0000 !important;      /* Grid line gaps -> Dark Red */
   --gray: #6b5c49 !important;           /* Secondary text / dates */
   --darkgray: #0f0d0a !important;       /* Plain text -> Dark black/brown */
@@ -17,33 +13,58 @@
   --secondary: #8b0000 !important;      /* Links & accents -> Dark Red */
   --tertiary: #b22222 !important;       /* Link hover -> Firebrick Red */
   --highlight: rgba(139, 0, 0, 0.15) !important;
+
+  /* Typography */
+  --headerFont: 'MedievalSharp', cursive, sans-serif !important;
+  --bodyFont: 'MedievalSharp', cursive, sans-serif !important;
 }
 
-/* 2. Outer Background (Vignette Removed) */
+/* 2. Universal Reset: Paint EVERYTHING yellow by default to kill white bars */
+*,
+*::before,
+*::after {
+  box-sizing: border-box !important;
+}
+
 html,
 body,
-#quartz-root {
+#quartz-root,
+.page-header,
+.page-footer,
+.page-body,
+header,
+footer,
+section,
+nav,
+div[class*="desktop-only"],
+div[class*="sidebar"],
+div[class*="container"] {
   background-color: #f3e5ab !important;
-  background-attachment: fixed !important;
-  min-height: 100vh !important;
-  height: 100% !important;
+  background-image: none !important;
   margin: 0 !important;
 }
 
-/* 3. Grid Lines, Layout Positioning & Centering */
+html, body, #quartz-root {
+  min-height: 100vh !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+/* 3. Main Outer Page Layout & Centering */
 .page {
   background-color: #8b0000 !important; /* Red grid dividers */
   gap: 1px !important;
   min-height: 100vh !important;
   display: flex !important;
-  justify-content: center !important;  /* Centering structural layout */
-  max-width: 1400px !important;        /* Constrains wide screen overflow */
-  margin: 0 auto !important;           /* Centers site in browser window */
+  justify-content: center !important;
+  align-items: stretch !important;      /* Forces left/center/right to all match full height */
+  max-width: 1400px !important;
+  margin: 0 auto !important;
   position: relative !important;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Sidebar sizing and alignment */
+/* Left Sidebar Fix -> Stretch to full height */
 .left {
   background-color: #f3e5ab !important;
   border-color: #8b0000 !important;
@@ -52,17 +73,24 @@ body,
   z-index: 10 !important;
   flex-shrink: 0 !important;
   width: 260px !important;
+  min-height: 100% !important;
+  height: auto !important;
+  padding: 1rem !important;
 }
 
+/* Right Sidebar Fix */
 .right {
   background-color: #f3e5ab !important;
   border-color: #8b0000 !important;
   outline: none !important;
   flex-shrink: 0 !important;
   width: 300px !important;
+  min-height: 100% !important;
+  height: auto !important;
+  padding: 1rem !important;
 }
 
-/* 4. Central Main Column with Custom Paper Background Texture */
+/* 4. Central Parchment Column */
 .center-container,
 .center,
 main {
@@ -70,17 +98,14 @@ main {
   flex-direction: column !important;
   flex-grow: 1 !important;
   min-height: 100vh !important;
-  height: 100% !important;
   padding: 2rem !important;
   border-color: #8b0000 !important;
   position: relative !important;
   z-index: 1 !important;
-  max-width: 840px !important;         /* Prevents main text area from over-expanding */
+  max-width: 840px !important;
 
-  /* Base Parchment Color Fallback */
+  /* Parchment Background */
   background-color: #fdf8eb !important;
-  
-  /* Paper Parchment Image Path */
   background-image: url("./paper-bg2.png") !important;
   background-repeat: repeat !important;
   background-position: top left !important;
@@ -88,7 +113,7 @@ main {
   box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
 }
 
-/* Force inner elements to be transparent over paper background */
+/* Make inner reading content transparent over paper texture */
 .center *,
 .center-container *,
 main *,
@@ -100,11 +125,31 @@ header,
 .content-meta,
 blockquote,
 pre,
-code {
+code,
+table,
+tr,
+th,
+td {
   background: transparent !important;
   background-color: transparent !important;
   box-shadow: none !important;
-  border-radius: 0 !important;
+}
+
+/* Table Specific Styling for Medieval Theme */
+table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  margin: 1.5rem 0 !important;
+  border: 1px solid rgba(139, 0, 0, 0.3) !important;
+}
+
+th, td {
+  border: 1px solid rgba(139, 0, 0, 0.2) !important;
+  padding: 0.6rem 0.8rem !important;
+}
+
+th {
+  border-bottom: 2px solid #8b0000 !important;
 }
 
 /* 5. Hide Footer & Unwanted Header Buttons */
@@ -116,7 +161,6 @@ footer,
   margin: 0 !important;
 }
 
-/* Hide theme toggle (sun/moon) and reader mode (book button) */
 .darkmode,
 .reader-mode,
 .read-mode,
@@ -138,7 +182,7 @@ svg.lucide-book-open,
   margin: 0 !important;
 }
 
-/* 6. Explorer Tree Fix -> Prevent Floating Overlap */
+/* 6. Explorer Tree Fix */
 .explorer,
 .explorer-content,
 .explorer-ul,
@@ -156,7 +200,7 @@ div[class*="explorer"] {
   border-radius: 4px;
 }
 
-/* 7. Graph View -> Matching Lighter Beige */
+/* 7. Graph View */
 .graph,
 .graph-outer,
 .graph-view,
@@ -171,7 +215,7 @@ canvas {
   border-radius: 6px !important;
 }
 
-/* 8. Page Dividers (<hr>) -> Dark Brown */
+/* 8. Page Dividers (<hr>) */
 hr, 
 article hr {
   border: none !important;
@@ -193,7 +237,7 @@ input[type="text"] {
   border-radius: 4px !important;
 }
 
-/* 10. Text Styling, Font Override & Logo Integration */
+/* 10. Text Styling & Logo Injection */
 article,
 article *,
 .page-title,
@@ -208,7 +252,7 @@ h1, h2, h3, h4, h5, h6, .article-title {
   color: #000000 !important;
 }
 
-/* Page Title & Centered Logo Injection */
+/* Logo Above Page Title */
 .page-title {
   display: flex !important;
   flex-direction: column !important;
@@ -261,7 +305,7 @@ a:hover,
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
 }
 
-/* 11. Mobile Responsiveness Fixes & Layout Restructuring */
+/* 11. Mobile Responsiveness */
 @media (max-width: 768px) {
   html, body, #quartz-root {
     overflow-x: hidden !important;
