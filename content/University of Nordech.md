@@ -1,0 +1,1 @@
+Arcane university located in the Empire of Nordech

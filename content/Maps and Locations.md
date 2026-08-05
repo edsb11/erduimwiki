@@ -8,4 +8,4 @@ Locations and subregions are categorized inside the following sections:
 
 ### The Aether
 
-### World of Erduim
+### [[Erduim]]
