@@ -90,27 +90,36 @@ html, body, #quartz-root {
   padding: 1rem !important;
 }
 
-/* 4. Central Parchment Column */
+/* 4. Central Main Column with Custom Paper Background Texture */
 .center-container,
 .center,
 main {
   display: flex !important;
   flex-direction: column !important;
   flex-grow: 1 !important;
-  min-height: 100vh !important;
+  min-height: 100vh !important;       /* Ensures it covers full screen on short pages */
+  height: auto !important;             /* Allows container to expand dynamically with long text */
   padding: 2rem !important;
+  margin: 0 !important;
   border-color: #8b0000 !important;
   position: relative !important;
   z-index: 1 !important;
   max-width: 840px !important;
 
-  /* Parchment Background */
+  /* Paper Parchment Image Path */
   background-color: #fdf8eb !important;
   background-image: url("./paper-bg2.png") !important;
   background-repeat: repeat !important;
   background-position: top left !important;
   background-size: auto !important;
   box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
+}
+
+/* Ensure outer wrappers expand as well */
+.page-body,
+.center-container {
+  overflow: visible !important;
+  height: auto !important;
 }
 
 /* Make inner reading content transparent over paper texture */
