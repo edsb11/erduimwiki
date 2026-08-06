@@ -19,47 +19,45 @@
   --bodyFont: 'MedievalSharp', cursive, sans-serif !important;
 }
 
-/* 2. Global Reset & Universal Background Color (Fixes White Bars Everywhere) */
+/* ==========================================================================
+   2. Global Reset & Universal Base Backgrounds
+   ========================================================================== */
 html,
 body,
-#quartz-root,
-div[id*="root"],
-.page,
-.page-header,
-.page-footer,
-.page-body,
-header,
-footer,
-section,
-nav,
-aside,
-div[class*="sidebar"],
-div[class*="container"] {
-  background-color: #f3e5ab !important; /* Forces the golden-beige tone everywhere */
-  box-sizing: border-box !important;
-}
-
-html, body {
+#quartz-root {
+  background-color: #f3e5ab !important; /* Base golden beige */
   margin: 0 !important;
   padding: 0 !important;
   min-height: 100vh !important;
-  height: 100% !important;
+  height: auto !important;
 }
 
-/* 3. Outer Page Container & Layout */
+/* ==========================================================================
+   3. Outer Page Layout Container
+   ========================================================================== */
 .page {
-  background-color: #8b0000 !important; /* Red grid dividers */
+  background-color: #8b0000 !important; /* Red divider lines */
   gap: 1px !important;
   min-height: 100vh !important;
+  height: auto !important;
   display: flex !important;
   justify-content: center !important;
+  align-items: stretch !important;
   max-width: 1400px !important;
   margin: 0 auto !important;
   position: relative !important;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Sidebars - Ensure they always fill vertical space */
+.page-body {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  min-height: 100vh !important;
+  height: auto !important;
+}
+
+/* Sidebars */
 .left,
 .right {
   background-color: #f3e5ab !important;
@@ -67,20 +65,18 @@ html, body {
   outline: none !important;
   flex-shrink: 0 !important;
   padding: 1rem !important;
+  height: auto !important;
 }
 
-.left {
-  width: 260px !important;
-  z-index: 10 !important;
-}
+.left { width: 260px !important; z-index: 10 !important; }
+.right { width: 300px !important; }
 
-.right {
-  width: 300px !important;
-}
-
-/* 4. The Infinite Center Column Fix */
-.center-container {
-  /* Move paper background to the parent container that wraps the whole middle column */
+/* ==========================================================================
+   4. Central Parchment Column (Targeted Fix - No Wildcards)
+   ========================================================================== */
+.center-container,
+div.center-container {
+  /* Paper Parchment Background */
   background-color: #fdf8eb !important;
   background-image: url("./paper-bg2.png") !important;
   background-repeat: repeat !important;
@@ -88,17 +84,30 @@ html, body {
   background-size: auto !important;
   box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
   
-  /* Flexbox & Layout setup */
+  /* Layout & Flexible Height */
   display: flex !important;
   flex-direction: column !important;
   flex: 1 1 auto !important;
   width: 100% !important;
   max-width: 840px !important;
   min-height: 100vh !important;
+  height: auto !important;
   padding: 2rem !important;
   border-color: #8b0000 !important;
 }
 
+/* Clear height caps on content children so they don't overflow */
+.center,
+main,
+article,
+.page-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
 /* Clear heights and backgrounds on inner children so paper shows through seamlessly */
 .center,
 main,
