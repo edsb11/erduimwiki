@@ -173,25 +173,51 @@ svg.lucide-book-open,
 }
 
 /* ==========================================================================
-   6. Explorer Tree Fix
+   6. Explorer Tree & Collapsible Folders
    ========================================================================== */
 .explorer,
-.explorer-content,
-.explorer-ul,
-.explorer-ul *,
-div[class*="explorer"] {
+.explorer-content {
   background-color: transparent !important;
-  background: transparent !important;
-  position: static !important;
 }
 
-.explorer .folder-container:hover,
-.explorer li:hover,
+/* Folder Header / Button */
+.explorer .folder-container {
+  display: flex !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  padding: 0.2rem 0.4rem !important;
+  border-radius: 4px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.explorer .folder-container:hover {
+  background-color: rgba(139, 0, 0, 0.1) !important;
+}
+
+/* Folder Arrow Icon */
+.explorer .folder-icon {
+  color: #8b0000 !important;
+  margin-right: 0.4rem !important;
+  transition: transform 0.15s ease !important;
+}
+
+/* Nested List Indentation */
+.explorer ul.folder-outer {
+  padding-left: 1rem !important;
+  margin-left: 0.5rem !important;
+  border-left: 1px dashed rgba(139, 0, 0, 0.3) !important;
+}
+
+/* Links inside Explorer */
+.explorer a {
+  color: #8b0000 !important;
+  font-family: 'MedievalSharp', cursive, sans-serif !important;
+  text-decoration: none !important;
+}
+
 .explorer a:hover {
-  background-color: rgba(139, 0, 0, 0.08) !important;
-  border-radius: 4px;
+  color: #b22222 !important;
 }
-
 /* ==========================================================================
    7. Graph View
    ========================================================================== */
