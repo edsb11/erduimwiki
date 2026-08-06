@@ -19,16 +19,12 @@
   --bodyFont: 'MedievalSharp', cursive, sans-serif !important;
 }
 
-/* 2. Universal Reset: Paint EVERYTHING yellow by default to kill white bars */
-*,
-*::before,
-*::after {
-  box-sizing: border-box !important;
-}
-
+/* 2. Global Reset & Universal Background Color (Fixes White Bars Everywhere) */
 html,
 body,
 #quartz-root,
+div[id*="root"],
+.page,
 .page-header,
 .page-footer,
 .page-body,
@@ -36,62 +32,40 @@ header,
 footer,
 section,
 nav,
-div[class*="desktop-only"],
+aside,
 div[class*="sidebar"],
 div[class*="container"] {
-  background-color: #f3e5ab !important;
-  background-image: none !important;
-  margin: 0 !important;
+  background-color: #f3e5ab !important; /* Forces the golden-beige tone everywhere */
+  box-sizing: border-box !important;
 }
 
-html, body, #quartz-root {
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
   min-height: 100vh !important;
   height: 100% !important;
-  width: 100% !important;
 }
 
-/* 3. Grid Lines, Layout Positioning & Height Unclamping */
-html,
-body,
-#quartz-root {
-  min-height: 100vh !important;
-  height: auto !important;
-  background-color: #f3e5ab !important;
-}
-
+/* 3. Outer Page Container & Layout */
 .page {
   background-color: #8b0000 !important; /* Red grid dividers */
   gap: 1px !important;
   min-height: 100vh !important;
-  height: auto !important;               /* Allows total height to grow */
   display: flex !important;
   justify-content: center !important;
-  align-items: stretch !important;      /* Ensures sidebars match center height */
   max-width: 1400px !important;
   margin: 0 auto !important;
   position: relative !important;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
-  overflow: visible !important;
 }
 
-.page-body {
-  display: flex !important;
-  flex-direction: row !important;
-  width: 100% !important;
-  min-height: 100vh !important;
-  height: auto !important;
-  overflow: visible !important;
-}
-
-/* Sidebar Sizing & Alignment */
+/* Sidebars - Ensure they always fill vertical space */
 .left,
 .right {
   background-color: #f3e5ab !important;
   border-color: #8b0000 !important;
   outline: none !important;
   flex-shrink: 0 !important;
-  min-height: 100% !important;
-  height: auto !important;
   padding: 1rem !important;
 }
 
@@ -104,100 +78,51 @@ body,
   width: 300px !important;
 }
 
-/* 4. Central Parchment Column (Dynamic Expansion Fix) */
-.center-container,
-.center,
-main,
-article {
-  display: flex !important;
-  flex-direction: column !important;
-  flex-grow: 1 !important;
-  flex-shrink: 0 !important;
-  min-height: 100vh !important;
-  height: auto !important;             /* Unlocks height restrictions */
-  max-height: none !important;         /* Removes hidden CSS height caps */
-  overflow: visible !important;        /* Prevents text clipping */
-  padding: 2rem !important;
-  margin: 0 !important;
-  border-color: #8b0000 !important;
-  position: relative !important;
-  z-index: 1 !important;
-  max-width: 840px !important;
-
-  /* Parchment Texture */
+/* 4. The Infinite Center Column Fix */
+.center-container {
+  /* Move paper background to the parent container that wraps the whole middle column */
   background-color: #fdf8eb !important;
   background-image: url("./paper-bg2.png") !important;
   background-repeat: repeat !important;
   background-position: top left !important;
   background-size: auto !important;
   box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
-}
-
-/* Force text and inner tags to stay transparent on top of the parchment background */
-article *,
-.center *,
-.center-container *,
-main *,
-header,
-.page-header,
-.article-title,
-.content-meta,
-blockquote,
-pre,
-code,
-table,
-tr,
-th,
-td {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Ensure outer wrappers expand as well */
-.page-body,
-.center-container {
-  overflow: visible !important;
-  height: auto !important;
-}
-
-/* Make inner reading content transparent over paper texture */
-.center *,
-.center-container *,
-main *,
-article,
-article *,
-header,
-.page-header,
-.article-title,
-.content-meta,
-blockquote,
-pre,
-code,
-table,
-tr,
-th,
-td {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Table Specific Styling for Medieval Theme */
-table {
-  border-collapse: collapse !important;
+  
+  /* Flexbox & Layout setup */
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
   width: 100% !important;
-  margin: 1.5rem 0 !important;
-  border: 1px solid rgba(139, 0, 0, 0.3) !important;
+  max-width: 840px !important;
+  min-height: 100vh !important;
+  padding: 2rem !important;
+  border-color: #8b0000 !important;
 }
 
-th, td {
-  border: 1px solid rgba(139, 0, 0, 0.2) !important;
-  padding: 0.6rem 0.8rem !important;
+/* Clear heights and backgrounds on inner children so paper shows through seamlessly */
+.center,
+main,
+article,
+.article-title,
+.content-meta,
+header,
+.page-header {
+  background: transparent !important;
+  background-color: transparent !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
 }
 
-th {
-  border-bottom: 2px solid #8b0000 !important;
+/* Ensure all text/elements inside reading column stay transparent */
+article *,
+.center *,
+main * {
+  background-color: transparent !important;
 }
 
 /* 5. Hide Footer & Unwanted Header Buttons */
