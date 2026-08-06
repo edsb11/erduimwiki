@@ -1,6 +1,8 @@
 @use "./variables.scss" as *;
 
-/* 1. Global Variables & Color Palette Overrides */
+/* ==========================================================================
+   1. Global Variables & Color Palette Overrides
+   ========================================================================== */
 :root {
   /* Core Quartz CSS Variable Overrides */
   --light: #f3e5ab !important;          /* Background color */
@@ -22,6 +24,12 @@
 /* ==========================================================================
    2. Global Reset & Universal Base Backgrounds
    ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box !important;
+}
+
 html,
 body,
 #quartz-root {
@@ -30,6 +38,7 @@ body,
   padding: 0 !important;
   min-height: 100vh !important;
   height: auto !important;
+  overflow-x: hidden !important;
 }
 
 /* ==========================================================================
@@ -47,6 +56,7 @@ body,
   margin: 0 auto !important;
   position: relative !important;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
+  overflow: visible !important;
 }
 
 .page-body {
@@ -55,6 +65,7 @@ body,
   width: 100% !important;
   min-height: 100vh !important;
   height: auto !important;
+  overflow: visible !important;
 }
 
 /* Sidebars */
@@ -68,11 +79,17 @@ body,
   height: auto !important;
 }
 
-.left { width: 260px !important; z-index: 10 !important; }
-.right { width: 300px !important; }
+.left { 
+  width: 260px !important; 
+  z-index: 10 !important; 
+}
+
+.right { 
+  width: 300px !important; 
+}
 
 /* ==========================================================================
-   4. Central Parchment Column (Targeted Fix - No Wildcards)
+   4. Central Parchment Column (Targeted Fix - Dynamic Stretch)
    ========================================================================== */
 .center-container,
 div.center-container {
@@ -94,21 +111,10 @@ div.center-container {
   height: auto !important;
   padding: 2rem !important;
   border-color: #8b0000 !important;
-}
-
-/* Clear height caps on content children so they don't overflow */
-.center,
-main,
-article,
-.page-header {
-  background: transparent !important;
-  background-color: transparent !important;
-  height: auto !important;
-  min-height: 0 !important;
-  max-height: none !important;
   overflow: visible !important;
 }
-/* Clear heights and backgrounds on inner children so paper shows through seamlessly */
+
+/* Clear height caps and backgrounds on inner children so paper shows through seamlessly */
 .center,
 main,
 article,
@@ -134,7 +140,9 @@ main * {
   background-color: transparent !important;
 }
 
-/* 5. Hide Footer & Unwanted Header Buttons */
+/* ==========================================================================
+   5. Hide Footer & Unwanted Header Buttons
+   ========================================================================== */
 footer,
 .footer {
   display: none !important;
@@ -164,7 +172,9 @@ svg.lucide-book-open,
   margin: 0 !important;
 }
 
-/* 6. Explorer Tree Fix */
+/* ==========================================================================
+   6. Explorer Tree Fix
+   ========================================================================== */
 .explorer,
 .explorer-content,
 .explorer-ul,
@@ -182,7 +192,9 @@ div[class*="explorer"] {
   border-radius: 4px;
 }
 
-/* 7. Graph View */
+/* ==========================================================================
+   7. Graph View
+   ========================================================================== */
 .graph,
 .graph-outer,
 .graph-view,
@@ -197,7 +209,9 @@ canvas {
   border-radius: 6px !important;
 }
 
-/* 8. Page Dividers (<hr>) */
+/* ==========================================================================
+   8. Page Dividers (<hr>)
+   ========================================================================== */
 hr, 
 article hr {
   border: none !important;
@@ -206,7 +220,9 @@ article hr {
   opacity: 0.8 !important;
 }
 
-/* 9. Search Bar */
+/* ==========================================================================
+   9. Search Bar
+   ========================================================================== */
 .search,
 .search-button,
 #search-bar,
@@ -219,7 +235,9 @@ input[type="text"] {
   border-radius: 4px !important;
 }
 
-/* 10. Text Styling & Logo Injection */
+/* ==========================================================================
+   10. Text Styling & Logo Injection
+   ========================================================================== */
 article,
 article *,
 .page-title,
@@ -287,7 +305,9 @@ a:hover,
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
 }
 
-/* 11. Mobile Responsiveness */
+/* ==========================================================================
+   11. Mobile Responsiveness
+   ========================================================================== */
 @media (max-width: 768px) {
   html, body, #quartz-root {
     overflow-x: hidden !important;
@@ -396,4 +416,4 @@ a:hover,
     width: 100% !important;
     max-width: 100% !important;
   }
-}/* force update */ 
+}
