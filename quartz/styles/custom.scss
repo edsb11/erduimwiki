@@ -50,55 +50,73 @@ html, body, #quartz-root {
   width: 100% !important;
 }
 
-/* 3. Main Outer Page Layout & Centering */
+/* 3. Grid Lines, Layout Positioning & Height Unclamping */
+html,
+body,
+#quartz-root {
+  min-height: 100vh !important;
+  height: auto !important;
+  background-color: #f3e5ab !important;
+}
+
 .page {
   background-color: #8b0000 !important; /* Red grid dividers */
   gap: 1px !important;
   min-height: 100vh !important;
+  height: auto !important;               /* Allows total height to grow */
   display: flex !important;
   justify-content: center !important;
-  align-items: stretch !important;      /* Forces left/center/right to all match full height */
+  align-items: stretch !important;      /* Ensures sidebars match center height */
   max-width: 1400px !important;
   margin: 0 auto !important;
   position: relative !important;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
+  overflow: visible !important;
 }
 
-/* Left Sidebar Fix -> Stretch to full height */
-.left {
-  background-color: #f3e5ab !important;
-  border-color: #8b0000 !important;
-  outline: none !important;
-  position: relative !important;
-  z-index: 10 !important;
-  flex-shrink: 0 !important;
-  width: 260px !important;
-  min-height: 100% !important;
+.page-body {
+  display: flex !important;
+  flex-direction: row !important;
+  width: 100% !important;
+  min-height: 100vh !important;
   height: auto !important;
-  padding: 1rem !important;
+  overflow: visible !important;
 }
 
-/* Right Sidebar Fix */
+/* Sidebar Sizing & Alignment */
+.left,
 .right {
   background-color: #f3e5ab !important;
   border-color: #8b0000 !important;
   outline: none !important;
   flex-shrink: 0 !important;
-  width: 300px !important;
   min-height: 100% !important;
   height: auto !important;
   padding: 1rem !important;
 }
 
-/* 4. Central Main Column with Custom Paper Background Texture */
+.left {
+  width: 260px !important;
+  z-index: 10 !important;
+}
+
+.right {
+  width: 300px !important;
+}
+
+/* 4. Central Parchment Column (Dynamic Expansion Fix) */
 .center-container,
 .center,
-main {
+main,
+article {
   display: flex !important;
   flex-direction: column !important;
   flex-grow: 1 !important;
-  min-height: 100vh !important;       /* Ensures it covers full screen on short pages */
-  height: auto !important;             /* Allows container to expand dynamically with long text */
+  flex-shrink: 0 !important;
+  min-height: 100vh !important;
+  height: auto !important;             /* Unlocks height restrictions */
+  max-height: none !important;         /* Removes hidden CSS height caps */
+  overflow: visible !important;        /* Prevents text clipping */
   padding: 2rem !important;
   margin: 0 !important;
   border-color: #8b0000 !important;
@@ -106,13 +124,34 @@ main {
   z-index: 1 !important;
   max-width: 840px !important;
 
-  /* Paper Parchment Image Path */
+  /* Parchment Texture */
   background-color: #fdf8eb !important;
   background-image: url("./paper-bg2.png") !important;
   background-repeat: repeat !important;
   background-position: top left !important;
   background-size: auto !important;
   box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
+}
+
+/* Force text and inner tags to stay transparent on top of the parchment background */
+article *,
+.center *,
+.center-container *,
+main *,
+header,
+.page-header,
+.article-title,
+.content-meta,
+blockquote,
+pre,
+code,
+table,
+tr,
+th,
+td {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 /* Ensure outer wrappers expand as well */
