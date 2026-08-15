@@ -1,3 +1,4 @@
+
 Anosia is, briefly, the continent where most of the living beings in Erduim reside. It is a massive, vast land full of diferent species, biomes, and natural formations that no other world had seen. It is considered the main continent for the world's history, mainly after the Gods and Deities had arrived Erduim and settled in the continent.
 
 # Locations:
