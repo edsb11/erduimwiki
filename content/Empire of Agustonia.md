@@ -15,4 +15,36 @@ The Third period of Agustonia remains as the most pacific one, where little grow
 
 At the top, we have the Clidrios, who is the prime leader of all the empire, serving the god Tor as a medium of communication between humanity and the Hara. In charge of obeying the godly code, Tor conceals the empire many natural benefits that no other kingdom has. Under the Clidrios, there are four emperors who work together, ruling each of the four main regions together, but every decision needs the approval of the Clidrios to be put into work. The emperors are also chosen by the Clidrios to work together with him.
 The Clidrios is also blessed by Tor with many vital benefits that extends his life to the fullest a human being can be pushed to. Clidrios can age to almost a thousand years if natural causes end their lives.
-Under the Emperors, lay the Lutennos, who work as regional senators for each burg and city of the empire. There are dozends of Lutennos, and they all reunite in the Tower of Decisions at Burg La'Ravnnia yearly to update the empire's affairs with the help of the Emperors and the Clidrios himself.
+Under the Emperors, lay the Lutennos, who work as regional senators for each burg and city of the empire. There are dozends of Lutennos, and they all meet in the Tower of Decisions at Burg La'Ravnnia yearly to update the empire's affairs with the help of the Emperors and the Clidrios himself.
+
+So, summarizing the power structure
+Tor>Clidrios>Emperors>Lutennos
+
+---
+
+### General data
+
+Population: ~15 million (Every species)
+
+Official languages: Imperial and it's dialects (Galladi, Aurini and Astrimmo)
+
+Common languages: Many involving the minorities living under the empire (Orc, elvish, and others).
+
+Capital: Burg La'Ravnnia
+
+Denomyn: Imperial
+
+Religion: 85% Tor Monotheism, 10% No religion, 5% Ancient/Lost gods. 
+
+Government: Autocracy
+
+Establishment: Realm of Rono -> Coastal villages -> Federation of the Rinniani Kingdoms -> Empire of Agustonia 
+
+Area:  933.937 km^2
+
+Currency: Austinis (Gold); Talatia (Silver); Brimius (Copper)
+
+---
+
+### Geography
+
