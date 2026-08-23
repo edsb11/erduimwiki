@@ -40,11 +40,43 @@ Government: Autocracy
 
 Establishment: Realm of Rono -> Coastal villages -> Federation of the Rinniani Kingdoms -> Empire of Agustonia 
 
-Area:  933.937 km^2
+Area:  933.937 km2
 
 Currency: Austinis (Gold); Talatia (Silver); Brimius (Copper)
 
 ---
 
 ### Geography
+
+With its great size, the Rinnia peninsula has very unique natural formations. Each region of the empire also accomodate unique populations and groups of villages, while others are where the Burgs lay: Larger and more populous cities.  
+Coming from the northwest, the stronger winds from the ocean pierce through the lands bringing the largest of clouds to the south, and cold air to the northeast. This keeps the empire with an equal temperature rate to several regions. 
+
+#### Region of Galladia
+
+Elevation: ~450m above sea level
+
+Galladia, being one of the greatest and more prestigious region, paints its yellow fields and lakes across the southern lands, while grass elevations segregate the flowery fields from the plain grasslands. In the base of every mountain there are big rock formations. Cloudy skies are predominant, and the southern mountain chains, one of the country's frontier lines, is always visible, making it easier for the local folk to localize themselves with a compass. Wide open cobblestone roads and commercial lines connect villages and Burgs, making it easy for commoners to travel around the empire. 
+
+
+#### Region of Roftori
+
+Elevation: ~40m above sea level
+
+Roftori is one of the first regions to be populated by the Imperials, long before the empire itself was consolidated. Even though there are no mountain chains like in the south, here there are singular jagged and rocky mountains, where many military forts reside, with large and wide pine tree forests below, after the mountain base. Black rock beaches line the coastline, presenting a unique appearance along the border of the continent and to those approaching land after a long time traveling by ship. Clouds drifting from the south normally descend to land, often making every place foggy while the sky is clear, and it barely rains at Roftori. Coastal winds often bend trees due to their strenght, and quickly push away the fog from beaches. High rock formations lay in the coastal lines, looking like great rocky walls. At lower altitudes, you often see flowery valleys, rocky flat lakes and colorful trees, but it's a very rare seasonal occasion for the flora to bloom so colorfully.
+
+#### County of Lessocht
+
+Elevation: ~20m above sea level
+
+Lessocht is a small region in the north, known for its independent political power and local economic sustainability. There is a great lake connected to the ocean by a river which locals believe to be *where souls of all gods are sleeping after being smitten by Tor*. Despite it being a local legend, the lake holds a vast amount of natural mana energy for unknown reasons, creating beautiful, shining blue waves along its entire expanse. Surrounding the lake is a dense and lush forest, which shares the same pine tree forest characteristics found in Roftori.
+
+#### Mount Solgur
+
+It is believed that Mt. Solgur has been where scholars formulated, for the first time, the concept of compass directions. Four unique mountains are almost perfectly aligned at this region: One to the north, south, west and east. Symbollicaly representing the four directions of the globe, and the four emperors, who rule the empire under the sacred Clidrios. Amidst the mountains lies Gavelo Abbey (representing the wisdom and sacred knowledge of the Clidrios among the emperors), where scholars and mathematicians live covered by shadows and almost no access to sunlight. The trajectory of the Ekkasardi sun aligned perfectly with the top of the eastern and western mountains.
+
+#### Runamarsch and Aussulem
+
+Two regions which are often unified as one for where the greatest roads and commercial routes were built. Yellow Runa flowers cover all the green grass extensions throughout the region, and it is one of the calmest places to be in the continent. The sky is normally blue and clear, and many animals live in groups, feeding themselves with Runa, a very nutritious plant.
+
+
 
