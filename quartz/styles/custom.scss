@@ -391,3 +391,32 @@ a:hover,
     box-sizing: border-box !important;
   }
 }
+
+/* Fix Article Content Container Alignment & Width */
+.center-container {
+  max-width: 1000px !important;
+  width: 100% !important;
+}
+
+.center, 
+main, 
+article {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+article p, 
+article h1, 
+article h2, 
+article h3, 
+article h4, 
+article h5, 
+article h6,
+article ul, 
+article ol, 
+article blockquote {
+  max-width: 100% !important;
+  width: 100% !important;
+}
