@@ -1,445 +1,890 @@
 @use "./variables.scss" as *;
 
+
+
 /* ==========================================================================
+
    1. Global Variables & Color Palette Overrides
+
    ========================================================================== */
+
 :root {
+
   /* Core Quartz CSS Variable Overrides */
+
   --light: #f3e5ab !important;          /* Background color */
+
   --lightgray: #8b0000 !important;      /* Grid line gaps -> Dark Red */
+
   --gray: #6b5c49 !important;           /* Secondary text / dates */
+
   --darkgray: #0f0d0a !important;       /* Plain text -> Dark black/brown */
+
   --dark: #000000 !important;           /* Headings -> Pure Black */
 
+
+
   /* Accents & Links */
+
   --secondary: #8b0000 !important;      /* Links & accents -> Dark Red */
+
   --tertiary: #b22222 !important;       /* Link hover -> Firebrick Red */
+
   --highlight: rgba(139, 0, 0, 0.15) !important;
 
+
+
   /* Typography */
+
   --headerFont: 'MedievalSharp', cursive, sans-serif !important;
+
   --bodyFont: 'MedievalSharp', cursive, sans-serif !important;
+
 }
 
+
+
 /* ==========================================================================
+
    2. Global Reset & Universal Base Backgrounds
+
    ========================================================================== */
+
 *,
+
 *::before,
+
 *::after {
+
   box-sizing: border-box !important;
+
 }
+
+
 
 html,
+
 body,
+
 #quartz-root {
+
   background-color: #f3e5ab !important; /* Base golden beige */
+
   margin: 0 !important;
+
   padding: 0 !important;
+
   min-height: 100vh !important;
+
   height: auto !important;
+
   overflow-x: hidden !important;
+
 }
 
+
+
 /* ==========================================================================
+
    3. Outer Page Layout Container
+
    ========================================================================== */
+
 .page {
+
   background-color: #8b0000 !important; /* Red divider lines */
+
   gap: 1px !important;
+
   min-height: 100vh !important;
+
   height: auto !important;
+
   display: flex !important;
+
   justify-content: center !important;
+
   align-items: stretch !important;
+
   max-width: 1400px !important;
+
   margin: 0 auto !important;
+
   position: relative !important;
+
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
+
   overflow: visible !important;
+
 }
+
+
 
 .page-body {
+
   display: flex !important;
+
   flex-direction: row !important;
+
   width: 100% !important;
+
   min-height: 100vh !important;
+
   height: auto !important;
+
   overflow: visible !important;
+
 }
+
+
 
 /* Sidebars */
+
 .left,
+
 .right {
+
   background-color: #f3e5ab !important;
+
   border-color: #8b0000 !important;
+
   outline: none !important;
+
   flex-shrink: 0 !important;
+
   padding: 1rem !important;
+
   height: auto !important;
+
 }
+
+
 
 .left { 
+
   width: 260px !important; 
+
   z-index: 10 !important; 
+
 }
+
+
 
 .right { 
+
   width: 300px !important; 
+
 }
 
+
+
 /* ==========================================================================
+
    4. Central Parchment Column (Targeted Fix - Dynamic Stretch)
+
    ========================================================================== */
+
 .center-container,
+
 div.center-container {
+
   /* Paper Parchment Background */
+
   background-color: #fdf8eb !important;
+
   background-image: url("./paper-bg2.png") !important;
+
   background-repeat: repeat !important;
+
   background-position: top left !important;
+
   background-size: auto !important;
+
   box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
+
   
+
   /* Layout & Flexible Height */
+
   display: flex !important;
+
   flex-direction: column !important;
+
   flex: 1 1 auto !important;
+
   width: 100% !important;
+
   max-width: 840px !important;
+
   min-height: 100vh !important;
+
   height: auto !important;
+
   padding: 2rem !important;
+
   border-color: #8b0000 !important;
+
   overflow: visible !important;
+
 }
+
+
 
 /* Clear height caps and backgrounds on inner children so paper shows through seamlessly */
+
 .center,
+
 main,
+
 article,
+
 .article-title,
+
 .content-meta,
+
 header,
+
 .page-header {
+
   background: transparent !important;
+
   background-color: transparent !important;
+
   height: auto !important;
+
   min-height: 0 !important;
+
   max-height: none !important;
+
   overflow: visible !important;
+
   box-shadow: none !important;
+
   border-radius: 0 !important;
+
   margin-bottom: 0 !important;
+
 }
+
+
 
 /* Ensure all text/elements inside reading column stay transparent */
+
 article *,
+
 .center *,
+
 main * {
+
   background-color: transparent !important;
+
 }
 
+
+
 /* ==========================================================================
+
    5. Hide Footer & Unwanted Header Buttons
+
    ========================================================================== */
+
 footer,
+
 .footer {
+
   display: none !important;
+
   height: 0 !important;
+
   padding: 0 !important;
+
   margin: 0 !important;
+
 }
+
+
 
 .darkmode,
+
 .reader-mode,
+
 .read-mode,
+
 button.reader-mode,
+
 button[aria-label*="reader"],
+
 button[aria-label*="Reader"],
+
 a[aria-label*="reader"],
+
 button:has(svg.lucide-book-open),
+
 button:has(svg.lucide-sun),
+
 button:has(svg.lucide-moon),
+
 svg.lucide-book-open,
+
 .left button:not(.search-button) {
+
   display: none !important;
+
   visibility: hidden !important;
+
   pointer-events: none !important;
+
   width: 0 !important;
+
   height: 0 !important;
+
   padding: 0 !important;
+
   margin: 0 !important;
+
 }
 
+
+
 /* ==========================================================================
+
    6. Explorer Tree & Collapsible Folders
+
    ========================================================================== */
+
 .explorer,
+
 .explorer-content {
+
   background-color: transparent !important;
+
 }
+
+
 
 /* Folder Header / Button */
+
 .explorer .folder-container {
+
   display: flex !important;
+
   align-items: center !important;
+
   cursor: pointer !important;
+
   padding: 0.2rem 0.4rem !important;
+
   border-radius: 4px !important;
+
   transition: background-color 0.2s ease !important;
+
 }
+
+
 
 .explorer .folder-container:hover {
+
   background-color: rgba(139, 0, 0, 0.1) !important;
+
 }
+
+
 
 /* Folder Arrow Icon */
+
 .explorer .folder-icon {
+
   color: #8b0000 !important;
+
   margin-right: 0.4rem !important;
+
   transition: transform 0.15s ease !important;
+
 }
+
+
 
 /* Nested List Indentation */
+
 .explorer ul.folder-outer {
+
   padding-left: 1rem !important;
+
   margin-left: 0.5rem !important;
+
   border-left: 1px dashed rgba(139, 0, 0, 0.3) !important;
+
 }
+
+
 
 /* Links inside Explorer */
+
 .explorer a {
+
   color: #8b0000 !important;
+
   font-family: 'MedievalSharp', cursive, sans-serif !important;
+
   text-decoration: none !important;
+
 }
+
+
 
 .explorer a:hover {
+
   color: #b22222 !important;
+
 }
+
 /* ==========================================================================
+
    7. Graph View
+
    ========================================================================== */
+
 .graph,
+
 .graph-outer,
+
 .graph-view,
+
 #graph-container,
+
 .graph > div,
+
 .graph-component,
+
 canvas {
+
   background-color: #fdf8eb !important;
+
   border: none !important;
+
   outline: none !important;
+
   box-shadow: none !important;
+
   border-radius: 6px !important;
+
 }
 
+
+
 /* ==========================================================================
+
    8. Page Dividers (<hr>)
+
    ========================================================================== */
+
 hr, 
+
 article hr {
+
   border: none !important;
+
   border-top: 2px solid #4a2e1b !important;
+
   margin: 2rem 0 !important;
+
   opacity: 0.8 !important;
+
 }
 
+
+
 /* ==========================================================================
+
    9. Search Bar
+
    ========================================================================== */
+
 .search,
+
 .search-button,
+
 #search-bar,
+
 .search-container input,
+
 .search-bar input,
+
 input[type="text"] {
+
   background-color: #fdfbf2 !important;
+
   border: 1px solid #8b0000 !important;
+
   color: #0f0d0a !important;
+
   border-radius: 4px !important;
+
 }
 
+
+
 /* ==========================================================================
+
    10. Text Styling & Logo Injection
+
    ========================================================================== */
+
 article,
+
 article *,
+
 .page-title,
+
 .article-title,
+
 h1, h2, h3, h4, h5, h6,
+
 p, span, li, blockquote {
+
   font-family: 'MedievalSharp', cursive, sans-serif !important;
+
   color: #0f0d0a !important;
+
 }
+
+
 
 h1, h2, h3, h4, h5, h6, .article-title {
+
   color: #000000 !important;
+
 }
+
+
 
 /* Logo Above Page Title */
+
 .page-title {
+
   display: flex !important;
+
   flex-direction: column !important;
+
   align-items: center !important;
+
   justify-content: center !important;
+
   text-align: center !important;
+
   font-size: 1.3rem !important;
+
   margin-bottom: 0.5rem !important;
+
 }
 
+
+
 .page-title a {
+
   display: flex !important;
+
   flex-direction: column !important;
+
   align-items: center !important;
+
   font-size: 1.3rem !important;
+
 }
+
+
 
 .page-title a::before {
+
   content: "" !important;
+
   display: block !important;
+
   width: 54px !important;
+
   height: 54px !important;
+
   background-image: url("./logo.png") !important;
+
   background-size: contain !important;
+
   background-repeat: no-repeat !important;
+
   background-position: center !important;
+
   margin: 0 0 8px 0 !important;
+
 }
+
+
 
 /* Links */
+
 a,
+
 a.internal,
+
 a.external,
+
 .breadcrumb-element,
+
 .breadcrumbs a,
+
 .page-title a {
+
   color: #8b0000 !important;
+
 }
+
+
 
 a:hover,
+
 .breadcrumbs a:hover {
+
   color: #b22222 !important;
+
 }
+
+
 
 /* Popovers */
+
 .popover,
+
 .popover-inner {
+
   background-color: #fdf8eb !important;
+
   border: 2px solid #8b0000 !important;
+
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
+
 }
+
+
 
 /* ==========================================================================
+
    11. Mobile Responsiveness
+
    ========================================================================== */
+
 @media (max-width: 768px) {
+
   html, body, #quartz-root {
+
     overflow-x: hidden !important;
+
     width: 100% !important;
+
   }
+
+
 
   .page {
+
     display: flex !important;
+
     flex-direction: column !important;
+
     width: 100% !important;
+
     max-width: 100vw !important;
+
     padding: 0 !important;
+
     gap: 0 !important;
+
     margin: 0 !important;
+
     box-shadow: none !important;
+
   }
+
+
 
   .left {
+
     display: flex !important;
+
     flex-direction: column-reverse !important;
+
     width: 100% !important;
+
     max-width: 100% !important;
+
     padding: 1rem !important;
+
     box-sizing: border-box !important;
+
     border-bottom: 2px solid #8b0000 !important;
+
     position: relative !important;
+
   }
+
+
 
   .right {
+
     width: 100% !important;
+
   }
+
+
 
   .explorer,
+
   .explorer-content,
+
   .explorer-ul,
+
   .explorer ul {
+
     display: flex !important;
+
     flex-direction: row !important;
+
     flex-wrap: wrap !important;
+
     justify-content: center !important;
+
     align-items: center !important;
+
     gap: 0.75rem 1.25rem !important;
+
     width: 100% !important;
+
     padding: 0 !important;
+
     margin: 0 0 1rem 0 !important;
+
   }
+
+
 
   .explorer li,
+
   .explorer div,
+
   .explorer a {
+
     white-space: nowrap !important;
+
     display: inline-block !important;
+
     font-size: 1rem !important;
+
     text-align: center !important;
+
   }
+
+
 
   .search,
-  .search-button,
-  #search-bar,
-  .search-container,
-  div[class*="search"] {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0.5rem 0 0 0 !important;
-    box-sizing: border-box !important;
-  }
 
   .search-button,
-  #search-bar input,
-  .search-container input {
+
+  #search-bar,
+
+  .search-container,
+
+  div[class*="search"] {
+
     width: 100% !important;
-    display: flex !important;
-    justify-content: center !important;
-    text-align: center !important;
-    padding: 0.6rem 1rem !important;
+
+    max-width: 100% !important;
+
+    margin: 0.5rem 0 0 0 !important;
+
     box-sizing: border-box !important;
+
   }
+
+
+
+  .search-button,
+
+  #search-bar input,
+
+  .search-container input {
+
+    width: 100% !important;
+
+    display: flex !important;
+
+    justify-content: center !important;
+
+    text-align: center !important;
+
+    padding: 0.6rem 1rem !important;
+
+    box-sizing: border-box !important;
+
+  }
+
+
 
   .center-container,
+
   .center,
+
   main {
+
     width: 100% !important;
+
     max-width: 100vw !important;
+
     padding: 1rem !important;
+
     box-sizing: border-box !important;
+
   }
+
+
 
   div[style*="float: right"],
+
   div[style*="float:left"] {
+
     float: none !important;
+
     width: 100% !important;
+
     max-width: 100% !important;
+
     margin: 1rem 0 !important;
+
     box-sizing: border-box !important;
+
   }
+
+
 
   div[style*="grid-template-columns"],
+
   .grid-container {
+
     grid-template-columns: 1fr !important;
+
     width: 100% !important;
+
   }
 
+
+
   .graph,
+
   .graph-outer,
+
   #graph-container {
+
     width: 100% !important;
+
     max-width: 100% !important;
+
   }
-}
+
+} 
+
