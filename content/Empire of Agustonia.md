@@ -5,10 +5,9 @@
   <span style="font-size: 0.85em;">Flag of the Empire</span>
 </div>
 
-Agustonia is a great empire located at the Rinnia Peninsula, near the central regions of [[Anosia]]. It is reigned by four crowns (or four emperors), who rule each region based on the four directions of the globe (currently, the emperors are the only ones who reign, not anymore serving the Clidrios). It extends its cultural borders to almost every other kingdom in the continent, and many of the city states' governments are inspired by the civillian code once created and used by the Agustonian emperors. The southern borders, where the peninsula is covered by continental land, are neighbors with the Reonwanni Mountain Chain and the Golden Fields (Galladia). Onwards to these lands, it is considered no more as a sovereign territory of the empire. Overseas, the empire is also great in its maritime market, trading with almost every other coastal kingdom. The overall living is considered to be high strandards, but mainly at the metropolises. In smaller towns and villages, economy and life is almost as every other in the continent - where rural strandards make the local living stable. In the cities, there is a strong enforce in education, arcane and political schools, each serving under the rule of the single god Tor.
-Agustonian history is divided in three great periods, each one categorized by the Clidrios reigning at the time. The first period being the expansion period, the second being the war period, and the third being the renaissance period.
-Currently, there is a struggle with the empire's wealth, for the greater economic growth was at the Second Period, where humans forced slavery upon other species inside the empire's territory. After the death of the Second Clidrios in the Great Southern War, almost everything written in the older version of the country's civil code was restructured, for the strict and tyrannic rules had lost their meanings. People were tired of the war, and when the Second Clidrios died at war, all of the political structure went at crisis, and needed to be restructured.
-The Third period of Agustonia remains as the most pacific one, where little growth was observed, bearing unstabilization in many of it's facets. 
+Agustonia is a great empire located at the Rinnia Peninsula, near the central regions of [[Anosia]]. It is reigned by four crowns (or four emperors), who rule each region based on the four directions of the globe (currently, the emperors are the only ones who reign, not anymore serving the Clidrios). It extends its cultural borders to almost every other kingdom in the continent, and many of the city states' governments are inspired by the civillian code once created and used by the Agustonian emperors. The southern borders, where the peninsula is covered by continental land, are neighbors with the Reonwanni Mountain Chain and the Golden Fields (Galladia). After the Galladian frontiers in the south, it is considered no more as a sovereign territory of the empire. Overseas, the empire is also great in its maritime market, trading with almost every other coastal kingdom. There are high strandard living in the great cities like Burg La'Ravnnia, where merchants lead the economy with an immense variety of goods, from armor plates to wine. The great cities have a very predominant use of Ash granite, rough and resistant material coming from ancient creatures' bones mixed with other dust, making the city with a grey-ish/yellow-ish color palette. Far from the great Burgs there are smaller towns and villages, built with cobblestone by the farmers and field workers themselves. Rural lifestyle differs, because many villages work and deliver their products to the local castle and local Dux, while the Lord delivers it to the capital cities. In a change, the Dux offers protection with his knights and benefits to the town.
+
+The history of the empire is classified by three grand periods, each one divided by the reigning Clidrios of that period. The first one, the *Ixpansia* (Expansion), known for the great crusades of expansion performed by the Duxes and Lutennos and the Clidrios itself. The second one, the *Fiirnos Audalla* (The Burnt Surface World), known for the great Agustonian wars and the tyranny reigning of the Second Clidrios, which enforced mass slavery, several prohibitions and crises, sieges and loots, and race division inside the lands of the empire. Finally, after the death of the Second Clidrios during the Campannia Ergo Sudivocca (Campaign against the people of the south), the Agustonian costumes were reestablished. People were uprising their own cities over a change since the Second Clidrios' death, and the greatest insurrection events have happened ever since. The rulers redefined the empire structure entirely, changing everything from what it was. The third period and current one kept order and freedom at a balance, shrinking the empire to an amount of capitals and cities that the government could manage without breaking its order, like it was in the past. The four emperors rule without the management of a Clidrios, and they are the messangers of Tor themselves instead of only one figure.
 
 ---
 ### Political structure
@@ -18,7 +17,7 @@ The Clidrios is also blessed by Tor with many vital benefits that extends his li
 Under the Emperors, lay the Lutennos, who work as regional senators for each burg and city of the empire. There are dozends of Lutennos, and they all meet in the Tower of Decisions at Burg La'Ravnnia yearly to update the empire's affairs with the help of the Emperors and the Clidrios himself.
 
 So, summarizing the power structure
-Tor>Clidrios>Emperors>Lutennos
+Tor>Clidrios>Emperors>Lutennos>Dux
 
 ---
 
@@ -62,8 +61,8 @@ Galladia, being one of the greatest and more prestigious region, paints its yell
 
 Elevation: ~40m above sea level
 
-Roftori is one of the first regions to be populated by the Imperials, long before the empire itself was consolidated. Even though there are no mountain chains like in the south, here there are singular jagged and rocky mountains, where many military forts reside, with large and wide pine tree forests below, after the mountain base. Black rock beaches line the coastline, presenting a unique appearance along the border of the continent and to those approaching land after a long time traveling by ship. Clouds drifting from the south normally descend to land, often making every place foggy while the sky is clear, and it barely rains at Roftori. Coastal winds often bend trees due to their strenght, and quickly push away the fog from beaches. High rock formations lay in the coastal lines, looking like great rocky walls. At lower altitudes, you often see flowery valleys, rocky flat lakes and colorful trees, but it's a very rare seasonal occasion for the flora to bloom so colorfully.
-
+Roftori is one of the first regions to be populated by the Imperials, long before the empire itself was consolidated. Even though there are no mountain chains like in the south, here there are singular jagged and rocky mountains, where many military forts reside, with large and wide pine tree forests below, after the mountain base. Black rock beaches line the coastline, presenting a unique appearance along the border of the continent and to those approaching land after a long time traveling by ship. Clouds drifting from the south normally descend to land, often making every place foggy while the sky is clear, and it barely rains at Roftori. Coastal winds often bend trees due to their strenght, and quickly push away the fog from beaches. High rock formations lay in the coastal lines, looking like great rocky walls. At lower altitudes, you often see flowery valleys, rocky flat lakes and colorful trees, but it's a very rare seasonal occasion for the flora to bloom so colorfully. The archipelago of all gods is near the Roftori coast, bathed by the fog, but in a distance visible to the naked eye.
+Geopolitically and symbolically, Roftori is the most important region. With great cities, monuments, buildings and systems. Humans lived in the region long before the Smite, working in small groups of farmers and fishermen. And when the gods were vanished, the vast majority of humans migrated from the archipelago to the mainland Rinnia peninsula. 
 #### County of Lessocht
 
 Elevation: ~20m above sea level
@@ -77,6 +76,16 @@ It is believed that Mt. Solgur has been where scholars formulated, for the first
 #### Runamarsch and Aussulem
 
 Two regions which are often unified as one for where the greatest roads and commercial routes were built. Yellow Runa flowers cover all the green grass extensions throughout the region, and it is one of the calmest places to be in the continent. The sky is normally blue and clear, and many animals live in groups, feeding themselves with Runa, a very nutritious plant.
+
+#### Island of Arad-Astrim
+
+Island of the Star-men. An ancient strain of old kings which was founded by King Eleo's first ten children, all of them with star-shaped scars on their bellies, their mark. The island is constituted by black rock formations in its entirety, and small darkwood groves. In its center, resides the castletown of the Arad-Astrimmos, surrounded by people who serve the keep and the empire. The island has extreme conditions in summer, which is often a place and season where knights of the Clidrio's Guard are trained.
+
+#### Region of Soderne
+
+#### Region of Aurenora
+
+
 
 
 
