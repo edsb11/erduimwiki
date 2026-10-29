@@ -1,42 +1,104 @@
 @use "./variables.scss" as *;
 
 /* ==========================================================================
-   ERDUIM WIKI: custom styles for Quartz 5
-
-   How colors work now:
-   - Every color comes from the theme in quartz.config.yaml (lightMode and
-     darkMode), so the site follows the device theme automatically.
-   - Do NOT type hex colors into this file, except --line below.
-     Use var(--light), var(--darkgray), var(--dark), var(--secondary), etc.
+   ERDUIM WIKI: custom styles for Quartz 5  (medieval manuscript edition)
 
    Contents
-     1. Theme variables
-     2. Base page and text
-     3. Page layout (columns)
-     4. Sidebar: logo, search, explorer
-     5. Hidden buttons and footer
-     6. Graph, dividers, popovers
-     7. Accessibility
-     8. Phones and small screens
+     1. Manuscript palette (follows the device light / dark theme)
+     2. MedievalSharp font
+     3. Base page and text
+     4. Page layout (columns)
+     5. Sidebar: logo, search, explorer
+     6. Hidden buttons and footer
+     7. Hover previews, graph, dividers
+     8. Accessibility
+     9. Phones and small screens
    ========================================================================== */
 
 
 /* ==========================================================================
-   1. Theme variables
+   1. Manuscript palette
+   These values are the same as in quartz.config.yaml. They are repeated here
+   because an Obsidian theme (the "@quartz-themes/core" plugin) can override
+   the config colors, and this block makes sure the manuscript colors win.
+   ":root:root" simply raises priority above the theme's own rules.
+   If you change a color, change it in BOTH files.
    ========================================================================== */
-:root {
-  --line: #8b0000;                 /* red divider lines between columns */
+:root:root {
+  /* light device: vellum page, brown ink, rubric red, gold */
+  --light: #f2e6c9 !important;
+  --lightgray: #d9c79a !important;
+  --gray: #8a7550 !important;
+  --darkgray: #3b2a1a !important;
+  --dark: #1f130a !important;
+  --secondary: #9b1b1b !important;
+  --tertiary: #8a6212 !important;
+  --highlight: rgba(155, 27, 27, 0.12) !important;
+
+  --line: #9b1b1b;                 /* red divider lines between columns */
   color-scheme: light;
 }
 
-:root[saved-theme="dark"] {
-  --line: #9b2c2c;                 /* a little lighter so it shows on black */
+:root:root[saved-theme="dark"] {
+  /* dark device: candlelit night, parchment text, lighter rubric, gold leaf */
+  --light: #17110c !important;
+  --lightgray: #3a2d20 !important;
+  --gray: #8d7a5c !important;
+  --darkgray: #e6d8b5 !important;
+  --dark: #e6d8b5 !important;
+  --secondary: #e6d8b5 !important;
+  --tertiary: #e6d8b5 !important;
+  --highlight: rgba(224, 122, 98, 0.15) !important;
+
+  --line: #8c3a2c;
   color-scheme: dark;
 }
 
 
 /* ==========================================================================
-   2. Base page and text
+   2. MedievalSharp font
+   Loaded from Google Fonts through quartz.config.yaml (typography section).
+   It is forced here too, so a theme cannot replace it.
+   Code blocks keep their monospace font.
+   ========================================================================== */
+:root:root {
+  --bodyFont: "MedievalSharp", cursive, sans-serif !important;
+  --headerFont: "MedievalSharp", cursive, sans-serif !important;
+  --titleFont: "MedievalSharp", cursive, sans-serif !important;
+  --font-text: "MedievalSharp", cursive, sans-serif !important;
+  --font-interface: "MedievalSharp", cursive, sans-serif !important;
+  --font-text-theme: "MedievalSharp", cursive, sans-serif !important;
+  --font-interface-theme: "MedievalSharp", cursive, sans-serif !important;
+}
+
+body,
+article,
+p,
+li,
+blockquote,
+td,
+th,
+a,
+span,
+input,
+button,
+h1, h2, h3, h4, h5, h6,
+.article-title,
+.page-title,
+.explorer a {
+  font-family: "MedievalSharp", cursive, sans-serif !important;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--codeFont), "IBM Plex Mono", monospace !important;
+}
+
+
+/* ==========================================================================
+   3. Base page and text
    ========================================================================== */
 *,
 *::before,
@@ -47,8 +109,8 @@
 html,
 body,
 #quartz-root {
-  background-color: var(--light) !important;   /* white in light mode, black in dark mode */
-  color: var(--darkgray);                       /* body text follows the theme */
+  background-color: var(--light) !important;   /* vellum in light mode, night in dark mode */
+  color: var(--darkgray);                       /* ink / parchment text follows the theme */
   margin: 0 !important;
   padding: 0 !important;
   min-height: 100vh !important;
@@ -56,24 +118,20 @@ body,
   overflow-x: hidden !important;
 }
 
-/* Fonts come from quartz.config.yaml (MedievalSharp via Google Fonts).
-   The names after the variable are a safety net. */
-body,
-article,
-p,
-li,
-blockquote,
-td,
-th,
-input {
-  font-family: var(--bodyFont), "MedievalSharp", cursive, sans-serif;
+h1, h2, h3, h4, h5, h6,
+.article-title {
+  color: var(--dark);
 }
 
-h1, h2, h3, h4, h5, h6,
+/* Small manuscript touches */
 .article-title,
-.page-title {
-  font-family: var(--headerFont), "MedievalSharp", cursive, sans-serif;
-  color: var(--dark);
+article h1 {
+  border-bottom: 2px double var(--tertiary);
+  padding-bottom: 0.2em;
+}
+
+article h2 {
+  color: var(--secondary);                      /* rubric-red section headings */
 }
 
 /* Nothing may overflow the screen */
@@ -86,7 +144,7 @@ iframe {
 
 
 /* ==========================================================================
-   3. Page layout (columns)
+   4. Page layout (columns)
    ========================================================================== */
 .page {
   background-color: var(--line) !important;     /* shows through the 1px gaps as divider lines */
@@ -99,7 +157,7 @@ iframe {
   max-width: 1400px !important;
   margin: 0 auto !important;
   position: relative !important;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2) !important;
   overflow: visible !important;
 }
 
@@ -130,9 +188,6 @@ iframe {
 .center-container,
 div.center-container {
   background-color: var(--light) !important;
-  /* Optional parchment texture. To bring it back, delete the comment marks:
-     background-image: url("./paper-bg2.png") !important;
-     background-repeat: repeat !important; */
 
   display: flex !important;
   flex-direction: column !important;
@@ -161,10 +216,10 @@ article,
 
 
 /* ==========================================================================
-   4. Sidebar: logo, search, explorer
+   5. Sidebar: logo, search, explorer (same layout as before)
    ========================================================================== */
 
-/* Logo above the site title (the layout you wanted to keep) */
+/* Logo above the site title */
 .page-title {
   display: flex !important;
   flex-direction: column !important;
@@ -249,7 +304,7 @@ article,
 
 
 /* ==========================================================================
-   5. Hidden buttons and footer
+   6. Hidden buttons and footer
    The theme toggle stays hidden because the site follows the device theme.
    (Keep the darkmode plugin enabled in the config: it does the switching.)
    ========================================================================== */
@@ -281,8 +336,36 @@ svg.lucide-book-open,
 
 
 /* ==========================================================================
-   6. Graph, dividers, popovers
+   7. Hover previews, graph, dividers
+   Hover preview needs "enablePopovers: true" in quartz.config.yaml.
    ========================================================================== */
+.popover {
+  z-index: 999 !important;
+}
+
+.popover,
+.popover-inner {
+  background-color: var(--light) !important;
+  color: var(--darkgray) !important;
+  border: 2px solid var(--secondary) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.popover-inner {
+  max-width: 520px !important;
+  max-height: 360px !important;
+  overflow: auto !important;
+  padding: 1rem !important;
+}
+
+/* Touch screens have no hover, so no previews there */
+@media (hover: none) {
+  .popover {
+    display: none !important;
+  }
+}
+
 .graph,
 .graph-outer,
 .graph-view,
@@ -299,21 +382,14 @@ svg.lucide-book-open,
 hr,
 article hr {
   border: none !important;
-  border-top: 2px solid var(--gray) !important;
+  border-top: 2px solid var(--tertiary) !important;
   margin: 2rem 0 !important;
   opacity: 0.8 !important;
 }
 
-.popover,
-.popover-inner {
-  background-color: var(--light) !important;
-  border: 2px solid var(--secondary) !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25) !important;
-}
-
 
 /* ==========================================================================
-   7. Accessibility
+   8. Accessibility
    ========================================================================== */
 :focus-visible {
   outline: 2px solid var(--secondary);
@@ -331,7 +407,7 @@ article hr {
 
 
 /* ==========================================================================
-   8. Phones and small screens
+   9. Phones and small screens
    800px matches the point where Quartz itself switches to its mobile layout.
    ========================================================================== */
 @media (max-width: 800px) {
