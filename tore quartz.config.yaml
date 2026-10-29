@@ -1,0 +1,53 @@
+[1mdiff --git a/quartz.config.yaml b/quartz.config.yaml[m
+[1mindex 305bee7..5ade7c4 100644[m
+[1m--- a/quartz.config.yaml[m
+[1m+++ b/quartz.config.yaml[m
+[36m@@ -19,27 +19,27 @@[m [mconfiguration:[m
+       header: "MedievalSharp"[m
+       body: "MedievalSharp"[m
+       code: "IBM Plex Mono"[m
+[31m-    colors:[m
+[31m-      lightMode:[m
+[31m-        light: "#faf8f8"[m
+[31m-        lightgray: "#e5e5e5"[m
+[31m-        gray: "#b8b8b8"[m
+[31m-        darkgray: "#4e4e4e"[m
+[31m-        dark: "#2b2b2b"[m
+[31m-        secondary: "#284b63"[m
+[31m-        tertiary: "#84a59d"[m
+[31m-        highlight: rgba(143, 159, 169, 0.15)[m
+[31m-        textHighlight: "#fff23688"[m
+[31m-      darkMode:[m
+[31m-        light: "#161618"[m
+[31m-        lightgray: "#393639"[m
+[31m-        gray: "#646464"[m
+[31m-        darkgray: "#d4d4d4"[m
+[31m-        dark: "#ebebec"[m
+[31m-        secondary: "#7b97aa"[m
+[31m-        tertiary: "#84a59d"[m
+[31m-        highlight: rgba(143, 159, 169, 0.15)[m
+[31m-        textHighlight: "#b3aa0288"[m
+[32m+[m[32mcolors:[m
+[32m+[m[32m  lightMode:[m
+[32m+[m[32m    light: "#ffffff"[m
+[32m+[m[32m    lightgray: "#e6e6e6"[m
+[32m+[m[32m    gray: "#b0b0b0"[m
+[32m+[m[32m    darkgray: "#3a3a3a"[m
+[32m+[m[32m    dark: "#141414"[m
+[32m+[m[32m    secondary: "#8b0000"[m
+[32m+[m[32m    tertiary: "#b5532a"[m
+[32m+[m[32m    highlight: "rgba(139,0,0,0.12)"[m
+[32m+[m[32m    textHighlight: "#fff23688"[m
+[32m+[m[32m  darkMode:[m
+[32m+[m[32m    light: "#000000"[m
+[32m+[m[32m    lightgray: "#2a2a2a"[m
+[32m+[m[32m    gray: "#6e6e6e"[m
+[32m+[m[32m    darkgray: "#d6d6d6"[m
+[32m+[m[32m    dark: "#f5f5f5"[m
+[32m+[m[32m    secondary: "#ef8a8a"[m
+[32m+[m[32m    tertiary: "#f0a070"[m
+[32m+[m[32m    highlight: "rgba(239,138,138,0.15)"[m
+[32m+[m[32m    textHighlight: "#b3aa0288"[m
+ plugins:[m
+   - source: "@quartz-community/created-modified-date"[m
+     enabled: true[m

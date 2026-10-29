@@ -1,4 +1,8 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+
+# =============================================================================
+#  1. GENERAL SETTINGS
+# =============================================================================
 configuration:
   pageTitle: "Erduim Wiki"
   baseUrl: "edsb11.github.io/erduimwiki"
@@ -6,35 +10,47 @@ configuration:
     - private
     - templates
     - .obsidian
+
+  # ---------------------------------------------------------------------------
+  #  Theme: fonts and colors
+  #  Colors switch automatically with the device theme (light / dark).
+  # ---------------------------------------------------------------------------
   theme:
     fontOrigin: googleFonts
     typography:
-      title: Cinzel
-      header: Cinzel
-      body: Lora
+      title: MedievalSharp
+      header: MedievalSharp
+      body: MedievalSharp
       code: IBM Plex Mono
     colors:
       lightMode:
-        light: "#ffffff"
-        lightgray: "#e6e6e6"
-        gray: "#b0b0b0"
-        darkgray: "#3a3a3a"
-        dark: "#141414"
-        secondary: "#8b0000"
-        tertiary: "#b5532a"
+        light: "#ffffff"        # page background
+        lightgray: "#e6e6e6"    # borders
+        gray: "#b0b0b0"         # secondary text, dates
+        darkgray: "#3a3a3a"     # body text
+        dark: "#141414"         # headings and icons
+        secondary: "#8b0000"    # links, accents (dark red)
+        tertiary: "#b5532a"     # hover
         highlight: "rgba(139,0,0,0.12)"
         textHighlight: "#fff23688"
       darkMode:
-        light: "#000000"
+        light: "#000000"        # page background
         lightgray: "#2a2a2a"
         gray: "#6e6e6e"
-        darkgray: "#d6d6d6"
-        dark: "#f5f5f5"
-        secondary: "#ef8a8a"
+        darkgray: "#d6d6d6"     # body text
+        dark: "#f5f5f5"         # headings and icons
+        secondary: "#ef8a8a"    # links, accents (lighter red, readable on black)
         tertiary: "#f0a070"
         highlight: "rgba(239,138,138,0.15)"
         textHighlight: "#b3aa0288"
+
+# =============================================================================
+#  2. PLUGINS
+#  Order inside each group is unchanged from your original file.
+# =============================================================================
 plugins:
+
+  # ---- Markdown processing --------------------------------------------------
   - source: "@quartz-community/created-modified-date"
     enabled: true
     options:
@@ -102,6 +118,8 @@ plugins:
   - source: "@quartz-community/roam"
     enabled: false
     order: 92
+
+  # ---- Fonts, theme plugin, publishing filters, site files ------------------
   - source: "@quartz-community/quartz-fonts"
     enabled: true
   - source: "@quartz-themes/core"
@@ -143,6 +161,8 @@ plugins:
     enabled: true
   - source: "@quartz-community/cname"
     enabled: true
+
+  # ---- Page types -----------------------------------------------------------
   - source: "@quartz-community/canvas-page"
     enabled: true
   - source: "@quartz-community/content-page"
@@ -151,18 +171,12 @@ plugins:
     enabled: true
   - source: "@quartz-community/tag-page"
     enabled: true
-  - source: "@quartz-community/explorer"
+
+  # ---- LEFT SIDEBAR: logo + title (10), search (20), buttons (30-35), explorer (50)
+  - source: "@quartz-community/page-title"
     enabled: true
-    options:
-      folderDefaultState: collapsed
-      folderClickBehavior: collapse
     layout:
       position: left
-      priority: 50
-  - source: "@quartz-community/graph"
-    enabled: true
-    layout:
-      position: right
       priority: 10
   - source: "@quartz-community/search"
     enabled: true
@@ -172,32 +186,9 @@ plugins:
       group: toolbar
       groupOptions:
         grow: true
-  - source: "@quartz-community/backlinks"
-    enabled: true
-    layout:
-      position: right
-      priority: 50
-  - source: "@quartz-community/article-title"
-    enabled: true
-    layout:
-      position: beforeBody
-      priority: 10
-  - source: "@quartz-community/content-meta"
-    enabled: true
-    layout:
-      position: beforeBody
-      priority: 20
-  - source: "@quartz-community/tag-list"
-    enabled: false
-    layout:
-      position: beforeBody
-      priority: 30
-  - source: "@quartz-community/page-title"
-    enabled: true
-    layout:
-      position: left
-      priority: 10
   - source: "@quartz-community/darkmode"
+    # Keep this enabled: it makes the site follow the device theme.
+    # The toggle button itself is hidden in custom.scss.
     enabled: true
     layout:
       position: left
@@ -209,31 +200,6 @@ plugins:
       position: left
       priority: 35
       group: toolbar
-  - source: "@quartz-community/breadcrumbs"
-    enabled: true
-    layout:
-      position: beforeBody
-      priority: 5
-      condition: not-index
-  - source: "@quartz-community/comments"
-    enabled: false
-    options:
-      provider: giscus
-      options: {}
-    layout:
-      position: afterBody
-      priority: 10
-  - source: "@quartz-community/footer"
-    enabled: true
-    options:
-      links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
-    layout:
-      position: footer
-      priority: 50
-  - source: "@quartz-community/recent-notes"
-    enabled: false
   - source: "@quartz-community/spacer"
     enabled: true
     options: {}
@@ -242,10 +208,27 @@ plugins:
       position: left
       priority: 25
       display: mobile-only
-  - source: "@quartz-community/bases-page"
+  - source: "@quartz-community/explorer"
     enabled: true
-    options: {}
-    order: 50
+    options:
+      folderDefaultState: collapsed
+      folderClickBehavior: collapse
+    layout:
+      position: left
+      priority: 50
+
+  # ---- ABOVE THE TEXT: breadcrumbs (5), title (10), properties (15), meta (20)
+  - source: "@quartz-community/breadcrumbs"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 5
+      condition: not-index
+  - source: "@quartz-community/article-title"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 10
   - source: "@quartz-community/note-properties"
     enabled: true
     options:
@@ -263,6 +246,56 @@ plugins:
       position: beforeBody
       priority: 15
       display: all
+  - source: "@quartz-community/content-meta"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 20
+  - source: "@quartz-community/tag-list"
+    enabled: false
+    layout:
+      position: beforeBody
+      priority: 30
+
+  # ---- RIGHT SIDEBAR: graph (10), contents (30), backlinks (50)
+  #      To remove the graph, change its "enabled" below to false.
+  - source: "@quartz-community/graph"
+    enabled: true
+    layout:
+      position: right
+      priority: 10
+  - source: "@quartz-community/backlinks"
+    enabled: true
+    layout:
+      position: right
+      priority: 50
+
+  # ---- Below the text and footer --------------------------------------------
+  - source: "@quartz-community/comments"
+    enabled: false
+    options:
+      provider: giscus
+      options: {}
+    layout:
+      position: afterBody
+      priority: 10
+  - source: "@quartz-community/footer"
+    enabled: false          # was hidden with CSS before; now simply off
+    options:
+      links:
+        GitHub: https://github.com/jackyzha0/quartz
+        Discord Community: https://discord.gg/cRFFHYye7t
+    layout:
+      position: footer
+      priority: 50
+  - source: "@quartz-community/recent-notes"
+    enabled: false
+
+  # ---- Extra page features --------------------------------------------------
+  - source: "@quartz-community/bases-page"
+    enabled: true
+    options: {}
+    order: 50
   - source: "@quartz-community/obsidian-plugin-excalidraw"
     enabled: true
     options:
@@ -270,6 +303,10 @@ plugins:
       darkMode: auto
       exportPadding: 20
     order: 50
+
+# =============================================================================
+#  3. LAYOUT GROUPS AND PAGE-TYPE OVERRIDES
+# =============================================================================
 layout:
   groups:
     toolbar:
