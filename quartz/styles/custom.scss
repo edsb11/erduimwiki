@@ -40,15 +40,15 @@
 }
 
 :root:root[saved-theme="dark"] {
-  /* dark device: candlelit night, parchment text, lighter rubric, gold leaf */
+  /* dark device: candlelit night, bright parchment text, cream accents */
   --light: #17110c !important;
   --lightgray: #3a2d20 !important;
-  --gray: #8d7a5c !important;
-  --darkgray: #e6d8b5 !important;
-  --dark: #e6d8b5 !important;
-  --secondary: #e6d8b5 !important;
-  --tertiary: #e6d8b5 !important;
-  --highlight: rgba(224, 122, 98, 0.15) !important;
+  --gray: #a8977a !important;
+  --darkgray: #f8f3e6 !important;        /* body text. Use #ffffff for pure white */
+  --dark: #ffffff !important;            /* headings */
+  --secondary: #f2e6c9 !important;       /* links and accents */
+  --tertiary: #e8d9a8 !important;        /* hover */
+  --highlight: rgba(242, 230, 201, 0.15) !important;
 
   --line: #8c3a2c;
   color-scheme: dark;
@@ -121,6 +121,21 @@ body,
 h1, h2, h3, h4, h5, h6,
 .article-title {
   color: var(--dark);
+}
+
+/* Body text: always uses the full text color (never faded), and a little
+   larger because MedievalSharp has thin strokes */
+article p,
+article li,
+article td,
+article th,
+article blockquote,
+article dd,
+article dt {
+  color: var(--darkgray) !important;
+  opacity: 1 !important;
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
 /* Small manuscript touches */

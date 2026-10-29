@@ -42,12 +42,12 @@ configuration:
       darkMode:
         light: "#17110c"        # candlelit night page
         lightgray: "#3a2d20"
-        gray: "#8d7a5c"
-        darkgray: "#e6d8b5"     # body text (parchment)
-        dark: "#f6ecd0"         # headings
-        secondary: "#e07a62"    # links, accents (lighter rubric)
-        tertiary: "#d9b24c"     # hover (gold leaf)
-        highlight: "rgba(224,122,98,0.15)"
+        gray: "#a8977a"         # secondary text, dates (lighter than before)
+        darkgray: "#f8f3e6"     # body text (bright parchment; use "#ffffff" for pure white)
+        dark: "#ffffff"         # headings
+        secondary: "#f2e6c9"    # links, accents (cream)
+        tertiary: "#e8d9a8"     # hover (pale gold)
+        highlight: "rgba(242,230,201,0.15)"
         textHighlight: "#d9b24c55"
 
 # =============================================================================
