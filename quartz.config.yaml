@@ -125,7 +125,8 @@ plugins:
   - source: "@quartz-themes/core"
     enabled: true
     options:
-      theme: default
+      theme: its-theme
+      variation: ttrpg-dnd
       mode: both
   - source: "@quartz-community/remove-draft"
     enabled: true
@@ -296,6 +297,10 @@ plugins:
     enabled: true
     options: {}
     order: 50
+  - source: github:Requiae/quartz-leaflet-bases-plugin
+    enabled: true
+    options:
+      enableCopyTool: false
   - source: "@quartz-community/obsidian-plugin-excalidraw"
     enabled: true
     options:
