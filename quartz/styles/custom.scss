@@ -10,7 +10,7 @@
      4. Page layout (columns)
      5. Sidebar: logo, search, explorer
      6. Hidden buttons and footer
-     7. Hover previews, graph, dividers
+     7. Hover previews, graph, dividers, tables
      8. Accessibility
      9. Phones and small screens
    ========================================================================== */
@@ -41,12 +41,12 @@
 
 :root:root[saved-theme="dark"] {
   /* dark device: candlelit night, bright parchment text, cream accents */
-  --light: #17110c !important;
-  --lightgray: #3a2d20 !important;
+  --light: ##ffffff !important;
+  --lightgray: ##ffffff !important;
   --gray: #a8977a !important;
   --darkgray: #f8f3e6 !important;        /* body text. Use #ffffff for pure white */
   --dark: #ffffff !important;            /* headings */
-  --secondary: #f2e6c9 !important;       /* links and accents */
+  --secondary: #e37500 !important;       /* links and accents */
   --tertiary: #e8d9a8 !important;        /* hover */
   --highlight: rgba(242, 230, 201, 0.15) !important;
 
@@ -136,6 +136,22 @@ article dt {
   opacity: 1 !important;
   font-size: 1.05rem;
   line-height: 1.7;
+
+  /* MedievalSharp is a very thin font and looks gray on a dark page.
+     A hairline outline in the same color makes the strokes bolder.
+     Make it stronger with 0.5px, or remove the next two lines to turn it off. */
+  -webkit-text-stroke: 0.35px currentColor;
+  paint-order: stroke fill;
+}
+
+/* No parent element may fade the text (some themes dim the whole article) */
+.center-container,
+.center,
+main,
+article,
+article > * {
+  opacity: 1 !important;
+  filter: none !important;
 }
 
 /* Small manuscript touches */
@@ -277,17 +293,29 @@ article,
   border-radius: 4px !important;
 }
 
-/* Explorer tree */
+/* Explorer: folders and pages like a documentation site
+   - folder names are bold, with a chevron
+   - pages are plain text
+   - nested items sit under a thin vertical guide line
+   - the page you are on is shown in the accent color */
 .explorer,
 .explorer-content {
   background-color: transparent !important;
+}
+
+.explorer ul {
+  list-style: none !important;
+}
+
+.explorer li {
+  margin: 0 !important;
 }
 
 .explorer .folder-container {
   display: flex !important;
   align-items: center !important;
   cursor: pointer !important;
-  padding: 0.2rem 0.4rem !important;
+  padding: 0.3rem 0.2rem !important;
   border-radius: 4px !important;
   transition: background-color 0.2s ease !important;
 }
@@ -297,24 +325,44 @@ article,
 }
 
 .explorer .folder-icon {
-  color: var(--secondary) !important;
-  margin-right: 0.4rem !important;
+  color: var(--gray) !important;
+  margin-right: 0.45rem !important;
+  flex-shrink: 0 !important;
   transition: transform 0.15s ease !important;
 }
 
-.explorer ul.folder-outer {
+.explorer .folder-button,
+.explorer .folder-title {
+  background: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  color: var(--dark) !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  text-align: left !important;
+  cursor: pointer !important;
+}
+
+.explorer .folder-outer {
   padding-left: 1rem !important;
-  margin-left: 0.5rem !important;
-  border-left: 1px dashed var(--gray) !important;
+  margin-left: 0.55rem !important;
+  border-left: 1px solid var(--gray) !important;
 }
 
 .explorer a {
-  color: var(--secondary) !important;
+  display: block !important;
+  padding: 0.25rem 0.2rem !important;
+  color: var(--darkgray) !important;
   text-decoration: none !important;
 }
 
 .explorer a:hover {
   color: var(--tertiary) !important;
+}
+
+.explorer a.active,
+.explorer li.active > a {
+  color: var(--secondary) !important;
 }
 
 
@@ -339,7 +387,7 @@ button:has(svg.lucide-book-open),
 button:has(svg.lucide-sun),
 button:has(svg.lucide-moon),
 svg.lucide-book-open,
-.left button:not(.search-button) {
+.left button:not(.search-button):not([class*="folder"]) {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -400,6 +448,32 @@ article hr {
   border-top: 2px solid var(--tertiary) !important;
   margin: 2rem 0 !important;
   opacity: 0.8 !important;
+}
+
+
+/* Tables (spell lists, stat tables): colored header band, thin row lines */
+article table {
+  width: 100%;
+  border-collapse: collapse !important;
+  margin: 1rem 0;
+}
+
+article thead th {
+  background-color: var(--secondary) !important;
+  color: var(--light) !important;
+  text-align: left;
+  padding: 0.55rem 0.75rem !important;
+  border: 0 !important;
+}
+
+article td {
+  padding: 0.5rem 0.75rem !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--lightgray) !important;
+}
+
+article tbody tr:hover td {
+  background-color: var(--highlight) !important;
 }
 
 
@@ -465,29 +539,20 @@ article hr {
     width: 100% !important;
   }
 
-  /* Page list as wrapped, centered rows */
+  /* Page list stays a collapsible tree, always visible, full width */
   .explorer,
-  .explorer-content,
-  .explorer-ul,
-  .explorer ul {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 0.75rem 1.25rem !important;
+  .explorer-content {
+    display: block !important;
     width: 100% !important;
+    max-height: none !important;
+    visibility: visible !important;
     padding: 0 !important;
     margin: 0 0 1rem 0 !important;
   }
 
-  .explorer li,
-  .explorer div,
   .explorer a {
-    white-space: nowrap !important;
-    display: inline-block !important;
     font-size: 1rem !important;
-    text-align: center !important;
+    white-space: normal !important;
   }
 
   /* Search bar full width */
