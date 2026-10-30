@@ -50,11 +50,10 @@ Currency: Austinis (Gold); Talatia (Silver); Brimius (Copper)
 ```zoommap
 imageBases:
   - path: Map_Agustonia.jpeg
-    name: Map of the Empire
 markers: Map_Agustonia.markers.json
 markerLayers:
   - Default
-minZoom: 0.25
+minZoom: 0.5
 maxZoom: 8
 wrap: false
 responsive: false
@@ -64,7 +63,7 @@ resizable: false
 resizeHandle: native
 render: dom
 imageRendering: auto
-id: map-mvu909uu
+id: map-mvu968vo
 ```
 
 
