@@ -1,15 +1,21 @@
 @use "./variables.scss" as *;
 
 /* ==========================================================================
-   ERDUIM WIKI: custom styles for Quartz 5  (medieval manuscript edition)
+   ERDUIM WIKI: custom styles for Quartz 5
+
+   LIGHT look = your original design: golden-beige sidebars, parchment centre
+   column, dark-red accents, MedievalSharp font.
+   DARK look  = the same design at night.
+   The light / dark button is visible. Without a click the site follows the
+   device theme.
 
    Contents
-     1. Manuscript palette (follows the device light / dark theme)
+     1. Colors (light and dark)
      2. MedievalSharp font
      3. Base page and text
-     4. Page layout (columns)
-     5. Sidebar: logo, search, explorer
-     6. Hidden buttons and footer
+     4. Page layout and parchment centre column
+     5. Sidebar: logo, search, folder tree
+     6. Buttons (light / dark toggle) and footer
      7. Hover previews, graph, dividers, tables
      8. Accessibility
      9. Phones and small screens
@@ -17,39 +23,41 @@
 
 
 /* ==========================================================================
-   1. Manuscript palette
-   These values are the same as in quartz.config.yaml. They are repeated here
-   because an Obsidian theme (the "@quartz-themes/core" plugin) can override
-   the config colors, and this block makes sure the manuscript colors win.
-   ":root:root" simply raises priority above the theme's own rules.
+   1. Colors
+   Same values as quartz.config.yaml. They are repeated here so an Obsidian
+   theme plugin cannot override them (":root:root" raises the priority).
    If you change a color, change it in BOTH files.
    ========================================================================== */
 :root:root {
-  /* light device: vellum page, brown ink, rubric red, gold */
-  --light: #f2e6c9 !important;
-  --lightgray: #d9c79a !important;
-  --gray: #8a7550 !important;
-  --darkgray: #3b2a1a !important;
-  --dark: #1f130a !important;
-  --secondary: #9b1b1b !important;
-  --tertiary: #8a6212 !important;
-  --highlight: rgba(155, 27, 27, 0.12) !important;
+  /* LIGHT (original) */
+  --light: #f3e5ab !important;            /* page and sidebar background */
+  --lightgray: #c9b27a !important;        /* soft borders, table lines */
+  --gray: #6b5c49 !important;             /* secondary text, dates */
+  --darkgray: #0f0d0a !important;         /* body text */
+  --dark: #000000 !important;             /* headings */
+  --secondary: #8b0000 !important;        /* links and accents */
+  --tertiary: #b22222 !important;         /* hover */
+  --highlight: rgba(139, 0, 0, 0.15) !important;
 
-  --line: #9b1b1b;                 /* red divider lines between columns */
+  --paper: #fdf8eb;                       /* centre column (parchment) */
+  --field: #fdfbf2;                       /* search box */
+  --line: #8b0000;                        /* red divider lines between columns */
   color-scheme: light;
 }
 
 :root:root[saved-theme="dark"] {
-  /* dark device: candlelit night, bright parchment text, cream accents */
-  --light: ##ffffff !important;
-  --lightgray: ##ffffff !important;
+  /* DARK */
+  --light: #171717 !important;
+  --lightgray: #171717 !important;
   --gray: #a8977a !important;
-  --darkgray: #f8f3e6 !important;        /* body text. Use #ffffff for pure white */
-  --dark: #ffffff !important;            /* headings */
-  --secondary: #e37500 !important;       /* links and accents */
-  --tertiary: #e8d9a8 !important;        /* hover */
+  --darkgray: #f8f3e6 !important;         /* body text. Use #ffffff for pure white */
+  --dark: #ffffff !important;
+  --secondary: #f2e6c9 !important;
+  --tertiary: #e8d9a8 !important;
   --highlight: rgba(242, 230, 201, 0.15) !important;
 
+  --paper: #21180f;
+  --field: #231a12;
   --line: #8c3a2c;
   color-scheme: dark;
 }
@@ -58,8 +66,7 @@
 /* ==========================================================================
    2. MedievalSharp font
    Loaded from Google Fonts through quartz.config.yaml (typography section).
-   It is forced here too, so a theme cannot replace it.
-   Code blocks keep their monospace font.
+   Forced here too so a theme cannot replace it. Code keeps a monospace font.
    ========================================================================== */
 :root:root {
   --bodyFont: "MedievalSharp", cursive, sans-serif !important;
@@ -109,8 +116,8 @@ samp {
 html,
 body,
 #quartz-root {
-  background-color: var(--light) !important;   /* vellum in light mode, night in dark mode */
-  color: var(--darkgray);                       /* ink / parchment text follows the theme */
+  background-color: var(--light) !important;
+  color: var(--darkgray);
   margin: 0 !important;
   padding: 0 !important;
   min-height: 100vh !important;
@@ -120,11 +127,9 @@ body,
 
 h1, h2, h3, h4, h5, h6,
 .article-title {
-  color: var(--dark);
+  color: var(--dark) !important;
 }
 
-/* Body text: always uses the full text color (never faded), and a little
-   larger because MedievalSharp has thin strokes */
 article p,
 article li,
 article td,
@@ -134,17 +139,35 @@ article dd,
 article dt {
   color: var(--darkgray) !important;
   opacity: 1 !important;
-  font-size: 1.05rem;
-  line-height: 1.7;
+}
 
-  /* MedievalSharp is a very thin font and looks gray on a dark page.
-     A hairline outline in the same color makes the strokes bolder.
-     Make it stronger with 0.5px, or remove the next two lines to turn it off. */
+/* In dark mode MedievalSharp's thin strokes look gray, so thicken them a bit.
+   Raise to 0.5px for more, or delete this block to turn it off. */
+:root[saved-theme="dark"] article p,
+:root[saved-theme="dark"] article li,
+:root[saved-theme="dark"] article td,
+:root[saved-theme="dark"] article th,
+:root[saved-theme="dark"] article blockquote {
   -webkit-text-stroke: 0.35px currentColor;
   paint-order: stroke fill;
 }
 
-/* No parent element may fade the text (some themes dim the whole article) */
+/* Links */
+a,
+a.internal,
+a.external,
+.breadcrumb-element,
+.breadcrumbs a,
+.page-title a {
+  color: var(--secondary) !important;
+}
+
+a:hover,
+.breadcrumbs a:hover {
+  color: var(--tertiary) !important;
+}
+
+/* No parent element may fade the text */
 .center-container,
 .center,
 main,
@@ -152,17 +175,6 @@ article,
 article > * {
   opacity: 1 !important;
   filter: none !important;
-}
-
-/* Small manuscript touches */
-.article-title,
-article h1 {
-  border-bottom: 2px double var(--tertiary);
-  padding-bottom: 0.2em;
-}
-
-article h2 {
-  color: var(--secondary);                      /* rubric-red section headings */
 }
 
 /* Nothing may overflow the screen */
@@ -175,7 +187,7 @@ iframe {
 
 
 /* ==========================================================================
-   4. Page layout (columns)
+   4. Page layout and parchment centre column
    ========================================================================== */
 .page {
   background-color: var(--line) !important;     /* shows through the 1px gaps as divider lines */
@@ -188,7 +200,7 @@ iframe {
   max-width: 1400px !important;
   margin: 0 auto !important;
   position: relative !important;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15) !important;
   overflow: visible !important;
 }
 
@@ -215,10 +227,15 @@ iframe {
 .left  { width: 260px !important; z-index: 10 !important; }
 .right { width: 300px !important; }
 
-/* Reading column */
+/* Centre column: parchment paper (original design) */
 .center-container,
 div.center-container {
-  background-color: var(--light) !important;
+  background-color: var(--paper) !important;
+  background-image: url("./paper-bg2.png") !important;
+  background-repeat: repeat !important;
+  background-position: top left !important;
+  background-size: auto !important;
+  box-shadow: inset 0 0 15px rgba(139, 69, 19, 0.08) !important;
 
   display: flex !important;
   flex-direction: column !important;
@@ -234,20 +251,34 @@ div.center-container {
   overflow-wrap: anywhere;
 }
 
-/* Let the text area grow with its content */
+/* In dark mode the paper texture is replaced by a plain dark page */
+:root[saved-theme="dark"] .center-container,
+:root[saved-theme="dark"] div.center-container {
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Inner parts stay transparent so the paper shows through */
 .center,
 main,
 article,
+.article-title,
+.content-meta,
+header,
 .page-header {
+  background: transparent !important;
+  background-color: transparent !important;
   height: auto !important;
   min-height: 0 !important;
   max-height: none !important;
   overflow: visible !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
 
 
 /* ==========================================================================
-   5. Sidebar: logo, search, explorer (same layout as before)
+   5. Sidebar: logo, search, folder tree
    ========================================================================== */
 
 /* Logo above the site title */
@@ -266,7 +297,6 @@ article,
   flex-direction: column !important;
   align-items: center !important;
   font-size: 1.3rem !important;
-  color: var(--secondary) !important;
 }
 
 .page-title a::before {
@@ -287,7 +317,7 @@ article,
 #search-bar,
 .search-container input,
 .search-bar input {
-  background-color: var(--light) !important;
+  background-color: var(--field) !important;
   border: 1px solid var(--secondary) !important;
   color: var(--darkgray) !important;
   border-radius: 4px !important;
@@ -295,9 +325,9 @@ article,
 
 /* Explorer: folders and pages like a documentation site
    - folder names are bold, with a chevron
-   - pages are plain text
+   - pages are plain links
    - nested items sit under a thin vertical guide line
-   - the page you are on is shown in the accent color */
+   - the page you are on is shown in the hover color */
 .explorer,
 .explorer-content {
   background-color: transparent !important;
@@ -325,7 +355,7 @@ article,
 }
 
 .explorer .folder-icon {
-  color: var(--gray) !important;
+  color: var(--secondary) !important;
   margin-right: 0.45rem !important;
   flex-shrink: 0 !important;
   transition: transform 0.15s ease !important;
@@ -352,7 +382,7 @@ article,
 .explorer a {
   display: block !important;
   padding: 0.25rem 0.2rem !important;
-  color: var(--darkgray) !important;
+  color: var(--secondary) !important;
   text-decoration: none !important;
 }
 
@@ -362,32 +392,34 @@ article,
 
 .explorer a.active,
 .explorer li.active > a {
-  color: var(--secondary) !important;
+  color: var(--tertiary) !important;
+  background-color: var(--highlight) !important;
+  border-radius: 4px !important;
 }
 
 
 /* ==========================================================================
-   6. Hidden buttons and footer
-   The theme toggle stays hidden because the site follows the device theme.
-   (Keep the darkmode plugin enabled in the config: it does the switching.)
+   6. Buttons (light / dark toggle) and footer
+   The toggle is visible. Without a click, the site follows the device theme;
+   once clicked, the browser remembers the choice.
+   Reader mode and the footer stay hidden.
    ========================================================================== */
 footer,
 .footer {
   display: none !important;
 }
 
-.darkmode,
 .reader-mode,
+.readermode,
 .read-mode,
 button.reader-mode,
+button.readermode,
 button[aria-label*="reader"],
 button[aria-label*="Reader"],
 a[aria-label*="reader"],
 button:has(svg.lucide-book-open),
-button:has(svg.lucide-sun),
-button:has(svg.lucide-moon),
 svg.lucide-book-open,
-.left button:not(.search-button):not([class*="folder"]) {
+.left button:not(.search-button):not(.darkmode):not([class*="folder"]):not([class*="dark"]) {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -397,29 +429,78 @@ svg.lucide-book-open,
   margin: 0 !important;
 }
 
+.darkmode,
+button.darkmode {
+  display: inline-flex !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0.3rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: none !important;
+  border: 0 !important;
+  cursor: pointer !important;
+}
+
+.darkmode svg {
+  width: 20px !important;
+  height: 20px !important;
+  fill: var(--darkgray) !important;
+  color: var(--darkgray) !important;
+}
+
+.darkmode:hover svg {
+  fill: var(--secondary) !important;
+  color: var(--secondary) !important;
+}
+
 
 /* ==========================================================================
-   7. Hover previews, graph, dividers
+   7. Hover previews, graph, dividers, tables
    Hover preview needs "enablePopovers: true" in quartz.config.yaml.
    ========================================================================== */
+/* The outer .popover is only an invisible wrapper (it keeps the preview open
+   while the mouse moves onto it). Only the inner box is drawn. */
 .popover {
-  z-index: 999 !important;
+  z-index: 9999 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
 }
 
-.popover,
-.popover-inner {
-  background-color: var(--light) !important;
-  color: var(--darkgray) !important;
-  border: 2px solid var(--secondary) !important;
+/* Solid, opaque box: parchment in light mode, dark paper in dark mode.
+   The colors are written out (not variables) so nothing can make it see-through. */
+:root:root .popover .popover-inner {
+  background-color: #fdf8eb !important;
+  background-image: none !important;
+  color: #0f0d0a !important;
+  opacity: 1 !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  mix-blend-mode: normal !important;
+  border: 2px solid #8b0000 !important;
   border-radius: 6px !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
-}
-
-.popover-inner {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35) !important;
   max-width: 520px !important;
   max-height: 360px !important;
   overflow: auto !important;
   padding: 1rem !important;
+}
+
+:root:root[saved-theme="dark"] .popover .popover-inner {
+  background-color: #21180f !important;
+  color: #f8f3e6 !important;
+  border-color: #f2e6c9 !important;
+}
+
+/* Text inside the preview follows the same colors */
+.popover .popover-inner p,
+.popover .popover-inner li,
+.popover .popover-inner td,
+.popover .popover-inner th {
+  color: inherit !important;
 }
 
 /* Touch screens have no hover, so no previews there */
@@ -435,7 +516,7 @@ svg.lucide-book-open,
 #graph-container,
 .graph > div,
 .graph-component {
-  background-color: var(--light) !important;
+  background-color: var(--paper) !important;
   border: none !important;
   outline: none !important;
   box-shadow: none !important;
@@ -445,11 +526,10 @@ svg.lucide-book-open,
 hr,
 article hr {
   border: none !important;
-  border-top: 2px solid var(--tertiary) !important;
+  border-top: 2px solid var(--gray) !important;
   margin: 2rem 0 !important;
   opacity: 0.8 !important;
 }
-
 
 /* Tables (spell lists, stat tables): colored header band, thin row lines */
 article table {
