@@ -47,6 +47,27 @@ Currency: Austinis (Gold); Talatia (Silver); Brimius (Copper)
 
 ### Geography
 
+```zoommap
+imageBases:
+  - path: Map_Agustonia.jpeg
+    name: Map of the Empire
+markers: Map_Agustonia.markers.json
+markerLayers:
+  - Default
+minZoom: 0.25
+maxZoom: 8
+wrap: false
+responsive: false
+width: 100%
+height: 480px
+resizable: false
+resizeHandle: native
+render: dom
+imageRendering: auto
+id: map-mvu909uu
+```
+
+
 With its great size, the Rinnia peninsula has very unique natural formations. Each region of the empire also accomodate unique populations and groups of villages, while others are where the Burgs lay: Larger and more populous cities.  
 Coming from the northwest, the stronger winds from the ocean pierce through the lands bringing the largest of clouds to the south, and cold air to the northeast. This keeps the empire with an equal temperature rate to several regions. 
 
